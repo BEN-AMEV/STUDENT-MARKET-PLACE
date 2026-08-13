@@ -727,13 +727,21 @@ const AdminDashboard = () => {
                 const seller  = dispute.seller || {};
                 const listing = dispute.listing || {};
                 const isResolving = resolvingId === dispute._id;
-                const imgUrl = listing.images?.[0]?.thumbnail || listing.images?.[0]?.url || '';
+                const imgUrl = resolveUrl(listing.images?.[0]?.thumbnail || listing.images?.[0]?.url || '');
                 return (
                   <div key={dispute._id} className="card card-padded" style={{ borderLeft: '4px solid #dc2626' }}>
                     {/* Header */}
                     <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: '16px' }}>
                       {imgUrl && (
-                        <img src={imgUrl} alt={listing.title} style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} />
+                        <img
+                          src={imgUrl}
+                          alt={listing.title}
+                          style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&fit=crop';
+                          }}
+                        />
                       )}
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>

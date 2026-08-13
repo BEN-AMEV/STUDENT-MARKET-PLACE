@@ -154,6 +154,10 @@ const ListingDetail = () => {
               src={imageUrls[activeImageIndex]}
               alt={listing.title}
               className="detail-main-image"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=800&h=600&fit=crop';
+              }}
             />
             <button
               type="button"
@@ -176,7 +180,14 @@ const ListingDetail = () => {
                   onClick={() => setActiveImageIndex(index)}
                   className={`detail-thumbnail ${activeImageIndex === index ? 'active' : ''}`}
                 >
-                  <img src={img} alt={`Thumbnail ${index + 1}`} />
+                  <img
+                    src={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&h=150&fit=crop';
+                    }}
+                  />
                 </div>
               ))}
             </div>
@@ -326,8 +337,12 @@ const ListingDetail = () => {
                 <Link key={item._id} to={`/listings/${item._id}`} className="detail-similar-card">
                   <div className="detail-similar-image">
                     <img
-                      src={resolveImageUrl(item.images?.[0]?.thumbnail || item.images?.[0]?.url)}
+                      src={resolveImageUrl(item.images?.[0])}
                       alt={item.title}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=225&fit=crop';
+                      }}
                     />
                   </div>
                 <div className="detail-similar-body">

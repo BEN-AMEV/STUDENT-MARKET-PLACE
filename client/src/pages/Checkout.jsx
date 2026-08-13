@@ -4,6 +4,7 @@ import useAuthStore from '../store/authStore';
 import api from '../services/api';
 import toast from 'react-hot-toast';
 import { buildWhatsAppUrl, buildOrderContactMessage } from '../utils/whatsapp';
+import { resolveImageUrl } from '../utils/imageUrl';
 import './Checkout.css';
 
 // ─── Load Paystack Inline JS dynamically ──────────────────────────────────────
@@ -275,10 +276,10 @@ const Checkout = () => {
 
   if (!listing) return null;
 
-  const imageUrl =
-    listing.images?.[0]?.thumbnail ||
-    listing.images?.[0]?.url ||
-    'https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=225&fit=crop';
+  const imageUrl = resolveImageUrl(
+    listing.images?.[0],
+    'https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=225&fit=crop'
+  );
 
   const sellerName = listing.seller
     ? `${listing.seller.firstName} ${listing.seller.lastName}`
@@ -470,7 +471,14 @@ const Checkout = () => {
             {/* Listing preview */}
             <div className="checkout-summary-listing">
               <div className="checkout-summary-listing-img">
-                <img src={imageUrl} alt={listing.title} />
+                <img
+                  src={imageUrl}
+                  alt={listing.title}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=225&fit=crop';
+                  }}
+                />
               </div>
               <div className="checkout-summary-listing-info">
                 <p className="checkout-summary-listing-title">{listing.title}</p>

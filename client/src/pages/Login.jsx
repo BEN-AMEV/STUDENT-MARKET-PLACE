@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 import toast from 'react-hot-toast';
+import GoogleAuthButton from '../components/GoogleAuthButton';
 import './Login.css';
 
 const Login = () => {
@@ -130,15 +131,7 @@ const Login = () => {
             <hr className="divider" />
           </div>
 
-          <button className="btn btn-ghost btn-full auth-sso-btn">
-            <img
-              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-              alt="Google"
-              width="20"
-              height="20"
-            />
-            <span>Continue with Student Portal (SSO)</span>
-          </button>
+          <GoogleAuthButton text="Continue with Google" />
         </div>
 
         {/* Trust Badge */}

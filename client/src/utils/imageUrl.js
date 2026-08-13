@@ -1,13 +1,26 @@
-const API_BASE = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api')
+  .replace(/\/api\/?$/, '');
+
+const DEFAULT_FALLBACK = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&fit=crop';
 
 /**
  * Resolves local relative upload URLs (e.g. /uploads/listings/xxx.png)
- * to absolute backend URLs (e.g. http://localhost:5000/uploads/listings/xxx.png).
+ * to absolute backend URLs (e.g. https://student-market-place-api.onrender.com/uploads/listings/xxx.png).
  * Leaves absolute URLs (Cloudinary, Unsplash, http://, https://, data:, blob:) untouched.
+ * Also safely handles image objects { url, thumbnail } or null/undefined.
  */
-export const resolveImageUrl = (url, fallback = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&fit=crop') => {
-  if (!url) return fallback;
-  if (typeof url !== 'string') return fallback;
+export const resolveImageUrl = (imageInput, fallback = DEFAULT_FALLBACK) => {
+  if (!imageInput) return fallback;
+
+  let url = imageInput;
+  if (typeof imageInput === 'object') {
+    url = imageInput.thumbnail || imageInput.url || '';
+  }
+
+  if (typeof url !== 'string' || !url.trim()) return fallback;
+
+  url = url.trim();
+
   if (
     url.startsWith('http://') ||
     url.startsWith('https://') ||
@@ -16,6 +29,7 @@ export const resolveImageUrl = (url, fallback = 'https://images.unsplash.com/pho
   ) {
     return url;
   }
+
   const cleanPath = url.startsWith('/') ? url : `/${url}`;
   return `${API_BASE}${cleanPath}`;
 };

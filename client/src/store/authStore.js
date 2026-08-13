@@ -78,6 +78,33 @@ const useAuthStore = create((set, get) => ({
   },
 
   /**
+   * Google Sign-In & Instant Sign-Up.
+   */
+  googleLogin: async (credentialPayload) => {
+    set({ isLoading: true, error: null });
+    try {
+      const payload = typeof credentialPayload === 'string'
+        ? { credential: credentialPayload }
+        : credentialPayload;
+
+      const { data } = await api.post('/auth/google', payload);
+      if (data.data?.accessToken) {
+        localStorage.setItem('accessToken', data.data.accessToken);
+      }
+      set({
+        user: data.data.user,
+        isAuthenticated: true,
+        isLoading: false,
+      });
+      return data;
+    } catch (error) {
+      const message = error.response?.data?.message || 'Google sign-in failed.';
+      set({ isLoading: false, error: message });
+      throw new Error(message);
+    }
+  },
+
+  /**
    * Logout user.
    */
   logout: async () => {

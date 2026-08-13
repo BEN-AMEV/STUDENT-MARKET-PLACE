@@ -66,7 +66,11 @@ module.exports.io = io;
 connectDB();
 
 // ─── Global Middleware ────────────────────────────────────────────────
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -92,9 +96,9 @@ const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
-// Override helmet's default `Cross-Origin-Resource-Policy: same-origin` so that
-// images uploaded to /uploads can be loaded by the client (different port in dev).
+// Serve static uploads with explicit cross-origin headers
 app.use('/uploads', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
   next();
 }, express.static(uploadsDir));

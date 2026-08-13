@@ -295,7 +295,14 @@ const Home = () => {
               {listings.map((item) => (
                 <Link key={item._id} to={`/listings/${item._id}`} className="product-card">
                   <div className="product-card-image">
-                    <img src={getListingImage(item)} alt={item.title} />
+                    <img
+                      src={getListingImage(item)}
+                      alt={item.title}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=450&fit=crop';
+                      }}
+                    />
                     <button
                       type="button"
                       className={`product-card-fav ${favorites[item._id] ? 'active' : ''}`}

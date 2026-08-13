@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 import api from '../services/api';
 import toast from 'react-hot-toast';
+import { resolveImageUrl } from '../utils/imageUrl';
 import './SellerDashboard.css';
 
 const SellerDashboard = () => {
@@ -116,7 +117,7 @@ const SellerDashboard = () => {
 
   const getImage = (item) => {
     if (item.images && item.images.length > 0) {
-      return item.images[0].thumbnail || item.images[0].url;
+      return resolveImageUrl(item.images[0]);
     }
     return 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&h=112&fit=crop';
   };

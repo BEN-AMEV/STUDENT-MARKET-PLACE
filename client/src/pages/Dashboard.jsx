@@ -392,10 +392,18 @@ const Dashboard = () => {
               {sellingOrders.map(order => {
                 const listing = order.listing || {};
                 const buyer   = order.buyer  || {};
-                const imgUrl  = resolveImageUrl(listing.images?.[0]?.thumbnail || listing.images?.[0]?.url);
+                const imgUrl  = resolveImageUrl(listing.images?.[0]);
                 return (
                   <div key={order._id} className="dash-order-card animate-fade-in-up">
-                    <img src={imgUrl} alt={listing.title} className="dash-order-img" />
+                    <img
+                      src={imgUrl}
+                      alt={listing.title}
+                      className="dash-order-img"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&fit=crop';
+                      }}
+                    />
                     <div className="dash-order-info">
                       <h4 className="dash-order-title">{listing.title || 'Unnamed Item'}</h4>
                       <p className="dash-order-seller">
@@ -501,11 +509,19 @@ const Dashboard = () => {
               {orders.map(order => {
                 const listing = order.listing || {};
                 const seller  = order.seller  || {};
-                const imgUrl  = resolveImageUrl(listing.images?.[0]?.thumbnail || listing.images?.[0]?.url);
+                const imgUrl  = resolveImageUrl(listing.images?.[0]);
                 const canReview = order.orderStatus === 'completed' && !reviewedOrders.has(order._id);
                 return (
                   <div key={order._id} className="dash-order-card animate-fade-in-up">
-                    <img src={imgUrl} alt={listing.title} className="dash-order-img" />
+                    <img
+                      src={imgUrl}
+                      alt={listing.title}
+                      className="dash-order-img"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&fit=crop';
+                      }}
+                    />
                     <div className="dash-order-info">
                       <h4 className="dash-order-title">{listing.title || 'Unnamed Item'}</h4>
                       <p className="dash-order-seller">

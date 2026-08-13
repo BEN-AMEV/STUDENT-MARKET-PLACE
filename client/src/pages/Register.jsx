@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 import toast from 'react-hot-toast';
+import GoogleAuthButton from '../components/GoogleAuthButton';
 import './Login.css'; // Shared auth styles
 
 const Register = () => {
@@ -309,6 +310,13 @@ const Register = () => {
                   )}
                 </button>
               </form>
+
+              {/* SSO Divider */}
+              <div className="auth-divider" style={{ marginTop: '20px', paddingTop: '16px' }}>
+                <hr className="divider" />
+              </div>
+
+              <GoogleAuthButton text="Sign up with Google" style={{ marginTop: '16px' }} />
 
               <div className="register-form-divider">
                 <p>

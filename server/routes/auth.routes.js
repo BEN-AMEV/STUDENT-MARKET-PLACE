@@ -19,6 +19,9 @@ router.post('/resend-otp', authController.resendOtp);
 // POST /api/auth/login — Login
 router.post('/login', validate(loginSchema), authController.login);
 
+// POST /api/auth/google — Google Sign-In & Auto Sign-Up
+router.post('/google', authController.googleAuth);
+
 // POST /api/auth/refresh — Refresh access token
 router.post('/refresh', authController.refreshToken);
 

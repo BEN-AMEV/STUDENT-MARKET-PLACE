@@ -3,6 +3,8 @@ const { generateAccessToken, generateRefreshToken, verifyRefreshToken } = requir
 const { generateOTP, hashOTP, generateRandomToken, hashToken } = require('../utils/otp');
 const { sendVerificationEmail, sendPasswordResetEmail } = require('../utils/email');
 const { TOKEN_EXPIRY } = require('../config/constants');
+const axios = require('axios');
+const crypto = require('crypto');
 
 /**
  * @desc    Register a new student
@@ -443,6 +445,123 @@ const resetPassword = async (req, res, next) => {
   }
 };
 
+/**
+ * @desc    Google Sign-In & Auto Sign-Up
+ * @route   POST /api/auth/google
+ * @access  Public
+ */
+const googleAuth = async (req, res, next) => {
+  try {
+    const { credential, email: directEmail, firstName: directFirstName, lastName: directLastName, avatarUrl: directAvatarUrl, googleId: directGoogleId } = req.body;
+
+    let email = directEmail;
+    let firstName = directFirstName;
+    let lastName = directLastName;
+    let avatarUrl = directAvatarUrl;
+    let googleId = directGoogleId;
+
+    // If Google Identity Services ID token (credential) is provided, verify with Google
+    if (credential) {
+      try {
+        const { data: googleUser } = await axios.get(`https://oauth2.googleapis.com/tokeninfo?id_token=${credential}`);
+        if (!googleUser || !googleUser.email) {
+          return res.status(400).json({
+            success: false,
+            message: 'Invalid Google credential token.',
+          });
+        }
+        email = googleUser.email;
+        firstName = googleUser.given_name || googleUser.name?.split(' ')[0] || 'Student';
+        lastName = googleUser.family_name || googleUser.name?.split(' ').slice(1).join(' ') || '';
+        avatarUrl = googleUser.picture || '';
+        googleId = googleUser.sub;
+      } catch (err) {
+        return res.status(400).json({
+          success: false,
+          message: 'Failed to verify Google token with Google OAuth services.',
+        });
+      }
+    }
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email is required for Google authentication.',
+      });
+    }
+
+    email = email.toLowerCase().trim();
+
+    // Check if user already exists
+    let user = await User.findOne({ $or: [{ email }, ...(googleId ? [{ googleId }] : [])] });
+
+    if (user) {
+      // Check suspension
+      if (user.isSuspended) {
+        return res.status(403).json({
+          success: false,
+          message: 'Your account has been suspended. Contact support.',
+        });
+      }
+
+      // Automatically mark email as verified via Google
+      user.isEmailVerified = true;
+      if (!user.avatarUrl && avatarUrl) {
+        user.avatarUrl = avatarUrl;
+      }
+      if (!user.googleId && googleId) {
+        user.googleId = googleId;
+      }
+    } else {
+      // Auto-determine campus from email domain if possible
+      let detectedUniversity = 'University of Ghana';
+      if (email.includes('knust.edu.gh')) detectedUniversity = 'KNUST';
+      else if (email.includes('ashesi.edu.gh')) detectedUniversity = 'Ashesi University';
+      else if (email.includes('ucc.edu.gh')) detectedUniversity = 'University of Cape Coast';
+      else if (email.includes('upsamail.edu.gh') || email.includes('upsa.edu.gh')) detectedUniversity = 'UPSA';
+
+      // Auto-register new student user
+      user = new User({
+        email,
+        firstName: firstName || 'Student',
+        lastName: lastName || '',
+        avatarUrl: avatarUrl || '',
+        university: detectedUniversity,
+        googleId: googleId || '',
+        passwordHash: crypto.randomBytes(24).toString('hex'),
+        isEmailVerified: true,
+        verificationStatus: 'not_submitted',
+      });
+    }
+
+    // Generate tokens
+    const accessToken = generateAccessToken(user._id);
+    const refreshToken = generateRefreshToken(user._id);
+
+    user.refreshToken = refreshToken;
+    await user.save();
+
+    // Set refresh token cookie
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    res.json({
+      success: true,
+      message: 'Google authentication successful.',
+      data: {
+        user: user.toJSON(),
+        accessToken,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   register,
   verifyEmail,
@@ -452,4 +571,5 @@ module.exports = {
   logout,
   forgotPassword,
   resetPassword,
+  googleAuth,
 };

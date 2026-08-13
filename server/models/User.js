@@ -60,6 +60,12 @@ const userSchema = new mongoose.Schema(
       maxlength: 500,
       default: '',
     },
+    googleId: {
+      type: String,
+      trim: true,
+      sparse: true,
+      index: true,
+    },
     whatsappNumber: {
       type: String,
       trim: true,
