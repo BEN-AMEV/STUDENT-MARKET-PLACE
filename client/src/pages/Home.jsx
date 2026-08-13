@@ -112,15 +112,20 @@ const Home = () => {
       {/* Hero Section */}
       <section className="home-hero">
         <div className="home-hero-content">
+          <div className="home-hero-eyebrow">
+            <span className="material-symbols-outlined">verified_user</span>
+            Student-Verified Marketplace
+          </div>
           <h2 className="text-display-lg home-hero-title">
-            Find everything you need for campus life.
+            Everything you need for{' '}
+            <span className="accent-word">campus life.</span>
           </h2>
           <form className="home-search-bar" onSubmit={handleSearchSubmit}>
             <span className="material-symbols-outlined home-search-icon">search</span>
             <input
               type="text"
               className="home-search-input"
-              placeholder="Search textbooks, dorm decor, bikes..."
+              placeholder="Search textbooks, electronics, services..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -150,6 +155,22 @@ const Home = () => {
           )}
         </div>
       </section>
+
+      {/* Mobile Category Strip — shown on mobile only */}
+      <div className="home-cat-strip">
+        <div className="chip-scroll-strip">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat.name}
+              onClick={() => handleCategoryClick(cat.name)}
+              className={`strip-chip ${selectedCategory === cat.name ? 'active' : ''}`}
+            >
+              <span className="material-symbols-outlined">{cat.icon}</span>
+              {cat.name}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* Main Content Layout */}
       <div className="home-layout">
