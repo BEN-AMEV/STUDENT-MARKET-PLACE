@@ -1,0 +1,247 @@
+/* ─── Create Listing Styles ─────────────────────────────── */
+.create-container {
+  padding-top: 100px;
+  padding-bottom: var(--space-2xl);
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: var(--space-margin-mobile);
+  padding-right: var(--space-margin-mobile);
+}
+
+.create-title {
+  margin-bottom: var(--space-xs);
+}
+
+.create-subtitle {
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--space-xl);
+}
+
+/* Steps indicator */
+.create-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.create-steps::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-border-base);
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.create-step-item {
+  position: relative;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border-base);
+  color: var(--color-outline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-body-sm);
+  transition: all var(--transition-base);
+}
+
+.create-step-item.active {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15);
+}
+
+.create-step-item.completed {
+  border-color: var(--color-primary);
+  background-color: var(--color-surface-container-low);
+  color: var(--color-primary);
+}
+
+/* Type selection card */
+.create-type-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+@media (min-width: 480px) {
+  .create-type-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.create-type-card {
+  border: 2px solid var(--color-border-base);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  background-color: var(--color-surface-container-lowest);
+}
+
+.create-type-card:hover {
+  border-color: var(--color-outline-variant);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.create-type-card.active {
+  border-color: var(--color-primary);
+  background-color: rgba(5, 150, 105, 0.05);
+}
+
+.create-type-icon {
+  font-size: 48px;
+  color: var(--color-outline);
+  transition: color var(--transition-fast);
+}
+
+.create-type-card.active .create-type-icon {
+  color: var(--color-primary);
+}
+
+/* Image Uploader */
+.create-uploader-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 480px) {
+  .create-uploader-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 640px) {
+  .create-uploader-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.create-uploader-card {
+  aspect-ratio: 1 / 1;
+  border: 2px dashed var(--color-border-base);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-outline);
+  transition: all var(--transition-fast);
+  background-color: var(--color-surface-container-lowest);
+  padding: var(--space-sm);
+  text-align: center;
+}
+
+.create-uploader-card:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: rgba(5, 150, 105, 0.02);
+}
+
+.create-uploader-icon {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.create-image-preview {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.create-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.create-image-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.create-image-remove:hover {
+  background-color: var(--color-error);
+}
+
+.create-image-remove .material-symbols-outlined {
+  font-size: 16px;
+}
+
+/* Condition select pills */
+.create-condition-group {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.create-condition-pill {
+  padding: 10px var(--space-lg);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-base);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface-variant);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.create-condition-pill:hover {
+  border-color: var(--color-outline);
+}
+
+.create-condition-pill.active {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+
+/* Navigation buttons */
+.create-form-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-2xl);
+}
+
+/* Section Wrapper */
+.create-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}

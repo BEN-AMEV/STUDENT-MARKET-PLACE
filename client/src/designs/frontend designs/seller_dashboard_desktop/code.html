@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seller Dashboard | CampusMarket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-tab-indicator {
+            view-transition-name: active-tab;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bccac0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6d7a72;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#410004",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#fffbff",
+                    "primary-fixed-dim": "#68dba9",
+                    "inverse-on-surface": "#befee3",
+                    "on-tertiary-fixed-variant": "#7f2928",
+                    "on-primary-container": "#f5fff7",
+                    "on-secondary-container": "#476c5b",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "secondary": "#416656",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#a8e7cd",
+                    "on-background": "#002117",
+                    "on-secondary-fixed-variant": "#294e3f",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#b0f0d6",
+                    "tertiary-container": "#ba5551",
+                    "inverse-primary": "#68dba9",
+                    "tertiary": "#9b3e3b",
+                    "surface-container-low": "#cbffe8",
+                    "outline": "#6d7a72",
+                    "on-primary-fixed-variant": "#005137",
+                    "primary-fixed": "#85f8c4",
+                    "primary": "#059669",
+                    "primary-hover": "#047857",
+                    "on-secondary-fixed": "#002115",
+                    "on-primary-fixed": "#002114",
+                    "surface-tint": "#059669",
+                    "secondary-container": "#c3ecd7",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#3d4a42",
+                    "surface-container": "#bbfbe1",
+                    "outline-variant": "#bccac0",
+                    "surface-container-high": "#b6f6db",
+                    "surface-bright": "#FFFBF7",
+                    "on-error": "#ffffff",
+                    "on-surface": "#002117",
+                    "secondary-fixed-dim": "#a8cfbc",
+                    "inverse-surface": "#003829",
+                    "secondary-fixed": "#c3ecd7",
+                    "surface-container-highest": "#b0f0d6",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#059669",
+                    "background": "#FFFBF7",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFBF7",
+                    "base": "#bccac0",
+                    "border-base": "#bccac0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "metadata": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md-mobile": ["18px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-lg">
+<!-- Desktop Navigation SideBar (Custom for Desktop Shell) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface border-r border-base z-50 hidden md:flex flex-col">
+<div class="px-6 py-8">
+<h1 class="text-primary font-headline-md text-headline-md tracking-tight">CampusMarket</h1>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-headline-sm text-headline-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-headline-sm text-headline-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-headline-sm text-headline-sm">Earnings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-headline-sm text-headline-sm">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-headline-sm text-headline-sm">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-base">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low">
+<div class="w-10 h-10 rounded-full bg-cover bg-center" data-alt="A professional studio headshot of a friendly university student with a warm smile, wearing a modern blue hoodie. The lighting is soft and natural, against a clean, minimalist off-white background that matches the CampusMarket brand aesthetic. The photo is high-resolution with a shallow depth of field." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMzoC1hPZuvwiHKQZmg0w61vdZF7kEurmsLI75UzQnv6iRlsLc5wrS4Q5EKmf0v9TdEQepI3TcgaL3__MQkhOfNZa3ud_-YyxSaIIhWyYlUp47AlQETkSGvB9tb-bDZcDtH9lEiwJOct6Js5G-7MFoFzlPYUASCyDg4uzIGtygU6dycdyi1KD0k0MPmdEs-aw75J0_f243epBFPQ3q3wxmEXz6lfJ6HnXrX7IWfTYHl0Lz7lYgeqTFcTS3d43dN1_N_PfYdXm_8qc')"></div>
+<div class="flex-1 overflow-hidden">
+<p class="font-headline-sm text-headline-sm truncate">Alex Rivera</p>
+<p class="text-metadata font-metadata text-outline">Top Seller • 4.9★</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top AppBar (Mobile/Tablet and Desktop Header) -->
+<header class="fixed top-0 left-0 md:left-64 right-0 h-16 bg-surface flex items-center justify-between px-margin-mobile md:px-margin-desktop z-40 border-b border-base">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md text-on-surface">Seller Dashboard</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center px-4 py-2 bg-surface-container-low rounded-full gap-2 border border-base">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm w-48" placeholder="Search orders..." type="text"/>
+</div>
+<button class="p-2 text-on-surface relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-headline-sm text-headline-sm hover:bg-primary-hover transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined">add</span>
+<span>List Item</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-24 md:pb-12 px-margin-mobile md:px-margin-desktop md:ml-64 max-w-container-max mx-auto">
+<!-- Performance Overview Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+<!-- Total Earnings -->
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-base flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Total Earnings</p>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-metadata font-metadata">+12.5%</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">$2,450.00</h3>
+</div>
+<div class="mt-4 pt-4 border-t border-base">
+<p class="text-metadata font-metadata text-outline">From 32 successful sales this semester</p>
+</div>
+</div>
+<!-- Active Listings -->
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-base flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Active Listings</p>
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">18</h3>
+</div>
+<div class="mt-4 pt-4 border-t border-base flex gap-2">
+<span class="text-metadata font-metadata text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> 4 new today
+                    </span>
+</div>
+</div>
+<!-- Conversion Rate -->
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-base flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Order Conversion</p>
+<span class="bg-primary/10 text-primary px-2 py-1 rounded text-metadata font-metadata">Top 5%</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">4.2%</h3>
+</div>
+<div class="mt-4 pt-4 border-t border-base">
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<p class="text-metadata font-metadata text-outline mt-2">Versus 2.1% campus average</p>
+</div>
+</div>
+</section>
+<!-- Inventory Management Section -->
+<section class="bg-surface rounded-xl shadow-sm border border-base overflow-hidden">
+<div class="px-6 py-4 border-b border-base flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex gap-6 overflow-x-auto no-scrollbar">
+<button class="pb-4 border-b-2 border-primary text-primary font-headline-sm text-headline-sm whitespace-nowrap">Active Listings (18)</button>
+<button class="pb-4 border-b-2 border-transparent text-outline hover:text-on-surface-variant font-headline-sm text-headline-sm transition-all whitespace-nowrap">Drafts (3)</button>
+<button class="pb-4 border-b-2 border-transparent text-outline hover:text-on-surface-variant font-headline-sm text-headline-sm transition-all whitespace-nowrap">Sold &amp; Archived</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-base rounded-lg hover:bg-surface-container-low">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 border border-base rounded-lg hover:bg-surface-container-low">
+<span class="material-symbols-outlined">sort</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-4 font-label-caps text-label-caps text-outline uppercase tracking-wider">Item Details</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-outline uppercase tracking-wider">Price</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-outline uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-outline uppercase tracking-wider">Engagement</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-outline uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-base">
+<!-- Item 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-12 rounded bg-cover bg-center border border-base flex-shrink-0" data-alt="A clean, high-quality photograph of a slightly used graphite grey mechanical keyboard on a white desk. The lighting is crisp and modern, focusing on the texture of the keycaps. Minimalist student workspace aesthetic with a soft blue accent in the background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsu_OdABi-SWE2NdvugZnnPPf40mhN2BbQ0dDxX2HRvYg8UnEMK93fi69fKAMrDTRjfmsB7cgSr5LdmIgfPAtMGvp4Ur3ji_n70_J0sIcVzTwmWSR0MBV6_9rg3MbUg2vdxvYdR35m_X5npf18MYD0W1xOtnZmZ5h5NWqAJbFWIXkwr1ZpZjsvOt9i5ghWIubyb1zeJXiqyzHOjdbcYR6e7wh3sXeGMmgS-FC12CI1o8eaMKRonFyiIYYJ8EYPgLWO-qtUgUJT1NM')"></div>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Mechanical Keyboard - Brown Switches</p>
+<p class="text-metadata font-metadata text-outline">Category: Electronics • Listed 2 days ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-headline-sm text-headline-sm">$45.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-secondary-container/50 text-on-secondary-container text-metadata font-headline-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Live
+                                </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-metadata font-metadata text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">visibility</span> 124 views
+                                    </div>
+<div class="flex items-center gap-2 text-metadata font-metadata text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span> 12 likes
+                                    </div>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-12 rounded bg-cover bg-center border border-base flex-shrink-0" data-alt="A close-up shot of a thick hardcover textbook titled 'Advanced Calculus' resting on a wooden library table. Warm, scholarly lighting with soft dust motes in the air. The CampusMarket teal verified badge is superimposed in a corner. High-quality academic atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCYK0dVCqSyB5Ez5phZF-YaycesJDqCISjpHDvcSSzPJjbW5ygcJF7pyGNoNhVvM7PVv-Mm-ad1Uv6R0pASnTR8i9U9LcMpbutQ2hd655ElyUMqsGRR2ARyhaK7Szd3G-wf-zHxMyKa4fyeZjXwb0poXN3M3oAKyXpvuAvsbTxQozyMgNWrFAC6gbCYssgCHi5RVQEmZo8kbqOf3QZuhFGfv27Hrm9t9ZDiwxNkzrxTYVZcdW6aop9ZKCcqHdMjEhnUfVmPG1A_hvk')"></div>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Calculus: Early Transcendentals</p>
+<p class="text-metadata font-metadata text-outline">Category: Textbooks • Listed 1 week ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-headline-sm text-headline-sm">$80.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-metadata font-headline-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Pending Sale
+                                </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-metadata font-metadata text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">visibility</span> 45 views
+                                    </div>
+<div class="flex items-center gap-2 text-metadata font-metadata text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span> 3 likes
+                                    </div>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Item 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-12 rounded bg-cover bg-center border border-base flex-shrink-0" data-alt="Two potted succulents in minimalist white ceramic planters, placed on a sunlit dormitory windowsill. The plants are vibrant green and healthy. The background shows a blurred campus courtyard in summer. Bright, airy, and inviting lifestyle photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0eygtz5rcvr09fuvGibCue6DOpJdQfsFH9f_ulJFx3MNbs0y3fTVcBEY_r93BjWiQs0bLgT38Q_uy59SNLdUTapWO7QOZz3nM71O6C-G_TIAib38vq0p_6tQNqp_W74rvtt6H8IU-w0Z-hN5H6xrrj__1p7obsa1FbvoAi9Ij2E5ku9h2PULLVBtzOr-eMSS1LZfWQleDeDTLogkQV-nipnRklgemgRz_Lx4sBtVfZYdkhjmClZ4iFsToOPwTq0_BeJ49rjL7gM8')"></div>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Mini Desk Succulents (Set of 2)</p>
+<p class="text-metadata font-metadata text-outline">Category: Home Decor • Listed 4 hours ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-headline-sm text-headline-sm">$15.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-secondary-container/50 text-on-secondary-container text-metadata font-headline-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Live
+                                </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-metadata font-metadata text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">visibility</span> 12 views
+                                    </div>
+<div class="flex items-center gap-2 text-metadata font-metadata text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span> 1 like
+                                    </div>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-lowest border-t border-base flex items-center justify-between">
+<p class="text-metadata font-metadata text-outline">Showing 1-3 of 18 active listings</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 border border-base rounded-lg text-outline font-headline-sm text-headline-sm hover:bg-surface-container-low disabled:opacity-50" disabled="">Previous</button>
+<button class="px-4 py-2 border border-base rounded-lg text-on-surface font-headline-sm text-headline-sm hover:bg-surface-container-low transition-all">Next</button>
+</div>
+</div>
+</section>
+<!-- Help/Resources Card -->
+<section class="mt-stack-lg grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-primary text-on-primary p-8 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md mb-2">Boost Your Sales</h4>
+<p class="font-body-sm text-body-sm opacity-90 max-w-md mb-6">Learn how to take better product photos and write descriptions that sell 2x faster.</p>
+<button class="bg-surface text-primary px-6 py-2 rounded-full font-headline-sm text-headline-sm hover:shadow-lg transition-all">Read Seller Guide</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 group-hover:scale-110 transition-transform duration-500">lightbulb</span>
+</div>
+<div class="bg-surface border border-base p-8 rounded-xl flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[32px]">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm mb-1">Student Verified Account</h4>
+<p class="text-body-sm font-body-sm text-outline">Your university status is active. Buyers see the verified badge on all your listings.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav for Mobile Only -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-base h-16 px-2 pb-2 pt-2 flex justify-around items-center z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-label-caps uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-2 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-label-caps uppercase mt-1">Dash</span>
+</a>
+<button class="flex flex-col items-center justify-center text-on-primary -mt-4 bg-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">add</span>
+</button>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-[10px] font-label-caps uppercase mt-1">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-label-caps uppercase mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.cursor = 'pointer';
+            });
+        });
+
+        // Tab Switching Logic (Simulated)
+        const tabs = document.querySelectorAll('button[class*="pb-4"]');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('border-primary', 'text-primary');
+                    t.classList.add('border-transparent', 'text-outline');
+                });
+                tab.classList.add('border-primary', 'text-primary');
+                tab.classList.remove('border-transparent', 'text-outline');
+            });
+        });
+    </script>
+</body></html>

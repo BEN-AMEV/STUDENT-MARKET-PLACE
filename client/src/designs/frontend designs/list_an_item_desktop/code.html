@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>List an Item | CampusMarket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#410004",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed-dim": "#68dba9",
+                        "inverse-on-surface": "#befee3",
+                        "on-tertiary-fixed-variant": "#7f2928",
+                        "on-primary-container": "#f5fff7",
+                        "on-secondary-container": "#476c5b",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        "secondary": "#416656",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#a8e7cd",
+                        "on-background": "#002117",
+                        "on-secondary-fixed-variant": "#294e3f",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#b0f0d6",
+                        "tertiary-container": "#ba5551",
+                        "inverse-primary": "#68dba9",
+                        "tertiary": "#9b3e3b",
+                        "surface-container-low": "#cbffe8",
+                        "outline": "#6d7a72",
+                        "on-primary-fixed-variant": "#005137",
+                        "primary-fixed": "#85f8c4",
+                        "primary": "#059669",
+                        "on-secondary-fixed": "#002115",
+                        "on-primary-fixed": "#002114",
+                        "surface-tint": "#059669",
+                        "secondary-container": "#c3ecd7",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#3d4a42",
+                        "surface-container": "#bbfbe1",
+                        "outline-variant": "#bccac0",
+                        "surface-container-high": "#b6f6db",
+                        "surface-bright": "#FFFBF7",
+                        "on-error": "#ffffff",
+                        "on-surface": "#002117",
+                        "secondary-fixed-dim": "#a8cfbc",
+                        "inverse-surface": "#003829",
+                        "secondary-fixed": "#c3ecd7",
+                        "surface-container-highest": "#b0f0d6",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#059669",
+                        "primary-hover": "#047857",
+                        "background": "#FFFBF7",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#FFFBF7",
+                        "base": "#E5E7EB",
+                        "border-base": "#E5E7EB"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "stack-lg": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "metadata": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { color: #059669; border-bottom: 2px solid #059669; }
+        .drag-over { border-color: #059669; background-color: rgba(5, 150, 105, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-touch-target-min bg-surface border-b border-border-base">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-primary">CampusMarket</h1>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="text-body-sm text-on-surface-variant">Listing as <span class="font-semibold">Kwame Mensah</span></span>
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young African university student, Kwame Mensah, with a warm and approachable smile. He is set against a clean, blurred campus background in soft daylight. The image has a crisp, modern aesthetic with high contrast and natural skin tones, fitting the trustworthy and community-focused vibe of CampusMarket." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJJUpfJg132uaB8Z73wQhPkMr5aEsSC4iQ1SaVNT9lsptN9qZPrG1mL_Vp55a5fSoIDvqdPZrbZF1BzPm6oqo2OkORgfX1gAFMD--ACsFFjhKBGv4nmjzo-NsJYaNABzvn6yZ_XOAveEcxuAXsUSwekjztJWEhvLZqaarvz34ETXlNQGfme6zyheT79cEPI2S89NHGRwwDqwZKp752V0kjEekALOWeZ6VtM8xVxweMjrztU33Jq7ZBmo7nVU8exP3FFpu735pIBXw"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Form Steps & Progress -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface rounded-xl shadow-sm border border-border-base overflow-hidden">
+<!-- Form Header / Progress -->
+<div class="px-stack-lg py-stack-md border-b border-border-base bg-surface-bright flex justify-between items-center">
+<div>
+<h2 class="text-headline-sm font-headline-sm">Create New Listing</h2>
+<p class="text-body-sm text-on-surface-variant">Fill in the details to reach thousands of students on campus.</p>
+</div>
+<div class="text-right">
+<p class="text-label-caps font-label-caps text-primary mb-1">Step 2 of 5</p>
+<div class="w-32 h-1.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="w-2/5 h-full bg-primary transition-all duration-500"></div>
+</div>
+</div>
+</div>
+<form class="p-stack-lg space-y-stack-lg">
+<!-- Step 1: Category Selection -->
+<section>
+<label class="text-label-caps font-label-caps block mb-stack-sm text-on-surface-variant">Choose Category</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-sm">
+<button class="group p-stack-md border-2 border-primary bg-primary/5 rounded-xl text-center transition-all hover:bg-primary/10" type="button">
+<span class="material-symbols-outlined text-primary mb-2" style="font-variation-settings: 'FILL' 1;">book</span>
+<p class="text-body-sm font-semibold text-primary">Textbooks</p>
+</button>
+<button class="group p-stack-md border border-border-base bg-surface-container-lowest rounded-xl text-center transition-all hover:border-primary hover:bg-primary/5" type="button">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-2">laptop_mac</span>
+<p class="text-body-sm font-medium text-on-surface-variant group-hover:text-primary">Electronics</p>
+</button>
+<button class="group p-stack-md border border-border-base bg-surface-container-lowest rounded-xl text-center transition-all hover:border-primary hover:bg-primary/5" type="button">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-2">checkroom</span>
+<p class="text-body-sm font-medium text-on-surface-variant group-hover:text-primary">Fashion</p>
+</button>
+<button class="group p-stack-md border border-border-base bg-surface-container-lowest rounded-xl text-center transition-all hover:border-primary hover:bg-primary/5" type="button">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-2">chair</span>
+<p class="text-body-sm font-medium text-on-surface-variant group-hover:text-primary">Housing</p>
+</button>
+</div>
+</section>
+<!-- Step 2: Photo Upload -->
+<section>
+<label class="text-label-caps font-label-caps block mb-stack-sm text-on-surface-variant">Photos (Up to 10)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-stack-lg flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer min-h-[200px]" id="drop-zone">
+<span class="material-symbols-outlined text-outline text-4xl mb-stack-sm">add_a_photo</span>
+<p class="text-body-lg font-medium text-on-surface">Drag and drop or click to upload</p>
+<p class="text-metadata text-on-surface-variant mt-1">High-quality photos increase sales by 40%</p>
+<input accept="image/*" class="hidden" multiple="" type="file"/>
+</div>
+<!-- Preview Slot -->
+<div class="mt-stack-sm flex gap-stack-sm overflow-x-auto pb-2">
+<div class="w-20 h-20 rounded-lg bg-surface-container border border-border-base flex-shrink-0 relative group">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A clean, minimalist close-up of a stack of academic textbooks on a wooden desk. The lighting is bright and natural, coming from a nearby window. The scene is calm and studious, emphasizing the high-quality and well-kept condition of the items for sale. Modern light mode aesthetic with soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVE-1VJhYbvcqYh2V4CM6au8H08Ep-MGBm-OpmU1skMDEas714mbHhhzmWHcryTmOTg0wnfWg6hCzll1MkGJs53N7P0Xz3LIaVzlRmB4-5g3P9EzH6iqSGcbieZMrO5ye2aDA4HP70v_ogZdxvfBjaSZXhllm0BKzI4nOPAm6APiDT3qbUaWhGwdv6PgYt7q16Aqhz3GPsHhtmq0lpS1bVURv1jateVi8dauD93nVNKWjfI5oz7vaczKwAhqWZid-qlkA2SbrlbBg"/>
+<button class="absolute -top-2 -right-2 bg-error text-on-error rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="w-20 h-20 rounded-lg border-2 border-dashed border-outline-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-outline">add</span>
+</div>
+</div>
+</section>
+<!-- Step 3: Item Details -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="col-span-full">
+<label class="text-label-caps font-label-caps block mb-stack-sm text-on-surface-variant">Listing Title</label>
+<input class="w-full h-11 px-4 border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface-container-lowest" placeholder="e.g. Organic Chemistry 8th Edition - McMurry" type="text"/>
+</div>
+<div>
+<label class="text-label-caps font-label-caps block mb-stack-sm text-on-surface-variant">Condition</label>
+<select class="w-full h-11 px-4 border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface-container-lowest">
+<option>New / Sealed</option>
+<option selected="">Gently Used</option>
+<option>Well Used</option>
+<option>For Parts</option>
+</select>
+</div>
+<div>
+<label class="text-label-caps font-label-caps block mb-stack-sm text-on-surface-variant">Price (GHS)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-medium">₵</span>
+<input class="w-full h-11 pl-10 pr-4 border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface-container-lowest" placeholder="0.00" type="number"/>
+</div>
+</div>
+</section>
+<!-- Step 4: Location -->
+<section>
+<label class="text-label-caps font-label-caps block mb-stack-sm text-on-surface-variant">Campus Location</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-sm">
+<div class="relative md:col-span-2">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">location_on</span>
+<input class="w-full h-11 pl-11 pr-4 border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface-container-lowest" placeholder="Search Hall or Campus Dept..." type="text"/>
+</div>
+<select class="w-full h-11 px-4 border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface-container-lowest">
+<option>Legon Main</option>
+<option>City Campus</option>
+<option>Korle-Bu</option>
+</select>
+</div>
+</section>
+<!-- Step 5: Description -->
+<section>
+<label class="text-label-caps font-label-caps block mb-stack-sm text-on-surface-variant">Description</label>
+<textarea class="w-full p-4 border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none bg-surface-container-lowest" placeholder="Mention any highlights, flaws, or include specific technical specs..." rows="4"></textarea>
+</section>
+<!-- Action Buttons -->
+<div class="pt-stack-md flex justify-between items-center border-t border-border-base">
+<button class="px-6 h-touch-target-min text-on-surface-variant font-semibold hover:bg-surface-container transition-colors rounded-lg" type="button">
+                                Save Draft
+                            </button>
+<div class="flex gap-stack-sm">
+<button class="px-6 h-touch-target-min border border-primary text-primary font-semibold hover:bg-primary/5 transition-colors rounded-lg" type="button">
+                                    Back
+                                </button>
+<button class="px-8 h-touch-target-min bg-primary text-on-primary font-semibold hover:bg-primary-hover transition-colors rounded-lg shadow-sm active:scale-95 duration-150" type="submit">
+                                    Review &amp; Post
+                                </button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Contextual Help & Preview -->
+<div class="hidden lg:block lg:col-span-4 space-y-stack-lg">
+<!-- Listing Preview Card -->
+<div class="bg-surface rounded-xl shadow-sm border border-border-base p-stack-lg sticky top-24">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-stack-md">Live Preview</h3>
+<div class="border border-border-base rounded-lg overflow-hidden bg-white">
+<div class="aspect-[4/3] bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="A professional product shot of a used MacBook Pro sitting on a clean, white minimalist surface. The screen displays a colorful academic research paper. The lighting is bright and even, highlighting the sleek metal chassis and excellent condition of the laptop. The background is a soft, out-of-focus modern campus library setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM0n97sUu8aDnve9RkM3mwhvTJGCD4yhu5rSeaDB1C8dLhipTlJ9uM_8GkBmPE--fKPV8T1qH5ApTQU3n8Nyn7l-5chB_pFPnA6boChDkpyMtlX-PiKQM3nS0LWqY7u21rUPGiWTQS4wzZ3apYUbCtzn7NA5zbKUDrovuAxo-bhjfuJcf9nrQTAec_wQgeZoEKrr-toNgyQ3wCGEKpxAb82n5ZFxHoE-K0BheLyKKBxqol-CmMrKNNMyB_gEn122vEa_igAxfklNQ"/>
+<div class="absolute top-2 right-2 bg-white/90 p-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-xl" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</div>
+</div>
+<div class="p-stack-md">
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-body-lg font-semibold truncate">Listing Title Here</h4>
+<span class="text-headline-sm text-primary font-bold">₵0.00</span>
+</div>
+<div class="flex items-center gap-1 mb-stack-md">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-metadata font-semibold uppercase tracking-wider">Gently Used</span>
+<span class="flex items-center text-metadata text-on-surface-variant">
+<span class="material-symbols-outlined text-sm mr-1">location_on</span>
+                                    Campus Location
+                                </span>
+</div>
+<div class="flex items-center gap-2 pt-stack-sm border-t border-border-base">
+<div class="w-6 h-6 rounded-full bg-surface-container border border-border-base"></div>
+<span class="text-metadata text-on-surface-variant">Kwame Mensah • <span class="text-secondary font-medium">Verified Student</span></span>
+</div>
+</div>
+</div>
+<!-- Safety Tips -->
+<div class="mt-stack-lg bg-surface-container-low p-stack-md rounded-lg">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<span class="text-body-sm font-semibold text-secondary">Selling Safely</span>
+</div>
+<ul class="text-metadata text-on-surface-variant space-y-2">
+<li class="flex gap-2">
+<span class="text-primary">•</span>
+                                Always meet buyers in well-lit, public campus areas like the Student Union.
+                            </li>
+<li class="flex gap-2">
+<span class="text-primary">•</span>
+                                Verify payment via mobile money (MTN/Telecel) before handing over items.
+                            </li>
+<li class="flex gap-2">
+<span class="text-primary">•</span>
+                                Be honest about condition to maintain your 5-star student rating.
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-border-base px-2 pb-2 pt-2 h-16 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-caps font-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-label-caps font-label-caps mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-2 py-1 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="text-label-caps font-label-caps mt-1">Sell</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-label-caps font-label-caps mt-1">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-caps font-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for Drag and Drop
+        const dropZone = document.getElementById('drop-zone');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.classList.add('drag-over');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.classList.remove('drag-over');
+            }, false);
+        });
+
+        // Simulating form interactions for title sync
+        const titleInput = document.querySelector('input[placeholder*="Organic Chemistry"]');
+        const previewTitle = document.querySelector('h4');
+        
+        titleInput.addEventListener('input', (e) => {
+            previewTitle.textContent = e.target.value || "Listing Title Here";
+        });
+
+        const priceInput = document.querySelector('input[placeholder="0.00"]');
+        const previewPrice = document.querySelector('.text-headline-sm.text-primary');
+
+        priceInput.addEventListener('input', (e) => {
+            previewPrice.textContent = e.target.value ? `₵${e.target.value}` : "₵0.00";
+        });
+    </script>
+</body></html>

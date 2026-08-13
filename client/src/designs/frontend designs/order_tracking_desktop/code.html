@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Tracking | CampusMarket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-fixed": "#410004",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#fffbff",
+                "primary-fixed-dim": "#68dba9",
+                "inverse-on-surface": "#befee3",
+                "on-tertiary-fixed-variant": "#7f2928",
+                "on-primary-container": "#f5fff7",
+                "on-secondary-container": "#476c5b",
+                "tertiary-fixed-dim": "#ffb3ae",
+                "secondary": "#416656",
+                "on-tertiary": "#ffffff",
+                "surface-dim": "#a8e7cd",
+                "on-background": "#002117",
+                "on-secondary-fixed-variant": "#294e3f",
+                "on-error-container": "#93000a",
+                "surface-variant": "#b0f0d6",
+                "tertiary-container": "#ba5551",
+                "inverse-primary": "#68dba9",
+                "tertiary": "#9b3e3b",
+                "surface-container-low": "#cbffe8",
+                "outline": "#6d7a72",
+                "on-primary-fixed-variant": "#005137",
+                "primary-fixed": "#85f8c4",
+                "primary": "#059669",
+                "on-secondary-fixed": "#002115",
+                "on-primary-fixed": "#002114",
+                "surface-tint": "#059669",
+                "secondary-container": "#c3ecd7",
+                "on-secondary": "#ffffff",
+                "on-surface-variant": "#3d4a42",
+                "surface-container": "#bbfbe1",
+                "outline-variant": "#bccac0",
+                "surface-container-high": "#b6f6db",
+                "surface-bright": "#FFFBF7",
+                "on-error": "#ffffff",
+                "on-surface": "#002117",
+                "secondary-fixed-dim": "#a8cfbc",
+                "inverse-surface": "#003829",
+                "secondary-fixed": "#c3ecd7",
+                "surface-container-highest": "#b0f0d6",
+                "tertiary-fixed": "#ffdad7",
+                "on-primary": "#ffffff",
+                "primary-container": "#059669",
+                "background": "#FFFBF7",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "surface": "#FFFBF7",
+                "primary-hover": "#047857",
+                "border-base": "#bccac0",
+                "text-dark": "#002117",
+                "text-muted": "#6d7a72"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.5rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "touch-target-min": "44px",
+                "stack-lg": "24px",
+                "container-max": "1280px",
+                "margin-desktop": "24px",
+                "stack-sm": "8px",
+                "gutter": "16px",
+                "stack-md": "16px",
+                "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                "headline-md-mobile": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-caps": ["Inter"],
+                "headline-sm": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "metadata": ["Inter"],
+                "body-sm": ["Inter"],
+                "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                "headline-md-mobile": ["18px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .stepper-line {
+            background: repeating-linear-gradient(to right, #bccac0 0, #bccac0 4px, transparent 4px, transparent 8px);
+        }
+        .stepper-line-active {
+            background: #059669;
+        }
+        .glass-card {
+            background: rgba(255, 251, 247, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-touch-target-min bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">location_on</span>
+<h1 class="text-headline-md-mobile font-headline-md-mobile text-primary md:text-headline-md md:font-headline-md">CampusMarket</h1>
+</div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<nav class="flex items-center gap-stack-md">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Explore</a>
+<a class="text-primary font-label-caps text-label-caps border-b-2 border-primary pb-1" href="#">My Orders</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Inbox</a>
+</nav>
+<div class="flex items-center gap-stack-sm pl-stack-lg border-l border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">search</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">person</span>
+</div>
+</div>
+<span class="md:hidden material-symbols-outlined text-on-surface-variant">search</span>
+</header>
+<main class="pt-24 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Order Header & Back -->
+<div class="mb-stack-lg">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors mb-4 group">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-label-caps text-label-caps">Back to Purchases</span>
+</button>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-caps text-label-caps">Ready for Pickup</span>
+<span class="text-on-surface-variant font-metadata text-metadata">Order #CM-982410-Z</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg">Apple MacBook Air M2 (2022)</h2>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="bg-primary text-on-primary px-6 h-touch-target-min rounded-xl font-headline-sm text-headline-sm flex items-center gap-2 hover:bg-primary-hover active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+                        Show Pickup QR
+                    </button>
+</div>
+</div>
+</div>
+<!-- Order Progress Stepper -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-stack-lg mb-stack-lg shadow-sm">
+<div class="flex items-center justify-between relative">
+<!-- Progress Line Background -->
+<div class="absolute top-5 left-[5%] right-[5%] h-0.5 stepper-line z-0"></div>
+<!-- Active Progress Line -->
+<div class="absolute top-5 left-[5%] w-[63%] h-0.5 stepper-line-active z-0"></div>
+<!-- Step 1: Ordered -->
+<div class="relative z-10 flex flex-col items-center gap-3 bg-surface-container-lowest px-2">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-primary">Ordered</p>
+<p class="font-metadata text-metadata text-on-surface-variant">Oct 24, 10:30 AM</p>
+</div>
+</div>
+<!-- Step 2: Payment Verified -->
+<div class="relative z-10 flex flex-col items-center gap-3 bg-surface-container-lowest px-2">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-primary">Verified</p>
+<p class="font-metadata text-metadata text-on-surface-variant">Oct 24, 11:15 AM</p>
+</div>
+</div>
+<!-- Step 3: Ready for Pickup -->
+<div class="relative z-10 flex flex-col items-center gap-3 bg-surface-container-lowest px-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest border-4 border-primary flex items-center justify-center shadow-[0_0_0_4px_rgba(5,150,105,0.1)]">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-primary">Ready for Pickup</p>
+<p class="font-metadata text-metadata text-on-surface-variant">Today, 2:45 PM</p>
+</div>
+</div>
+<!-- Step 4: Completed -->
+<div class="relative z-10 flex flex-col items-center gap-3 bg-surface-container-lowest px-2 opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-low border-2 border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">done_all</span>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps">Completed</p>
+<p class="font-metadata text-metadata">Pending</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg">
+<!-- Left Column: Details & Pickup -->
+<div class="lg:col-span-2 space-y-stack-lg">
+<!-- Pickup Information -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+<div class="p-stack-md border-b border-outline-variant bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<h3 class="font-headline-sm text-headline-sm">Pickup Details</h3>
+</div>
+<div class="p-stack-lg grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="space-y-4">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">Meeting Location</p>
+<p class="font-body-lg text-body-lg font-semibold">Student Union - North Lobby</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Near the central information desk. Look for the blue benches.</p>
+</div>
+<div class="p-4 bg-primary/10 border border-primary/20 rounded-lg">
+<p class="font-body-sm text-body-sm text-primary font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+                                    Campus Safety Zone Verified
+                                </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex-1 border border-primary text-primary h-touch-target-min rounded-lg font-label-caps text-label-caps hover:bg-primary/5 transition-colors">Open in Maps</button>
+<button class="flex-1 bg-surface-container-highest text-on-surface h-touch-target-min rounded-lg font-label-caps text-label-caps hover:bg-surface-variant transition-colors">Request Change</button>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden h-48 md:h-full border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center" data-location="University Student Union" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBBXZjEOzDCGpl6de6M_ecjl0cbCgI-SXCS_jh5u-i6aGuqke78hYMHG3G4qA5hHpkCJYszj-0MovFNNHt5ftv98ICt4zOCcUu5wEuGsBNCxxGgV8IUQu4dYmI6PPxzxy-_fB4bRG3MsqR32T6LCPrJ-NrFwR9aPx2gPt3KxL3Ae4FGAdeqJgRjo37t-hoM-Og6MVtn088FSsJpboGOKZY5uGfty9vkGwAd4lRZ_TcPDEmyt1RZiIXOD57j6tFQj8ItyaWmsahd3zI')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute bottom-3 left-3 bg-surface-container-lowest px-2 py-1 rounded text-metadata font-metadata shadow-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span> Live Map
+                            </div>
+</div>
+</div>
+</section>
+<!-- Order Items -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm">
+<div class="p-stack-md border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm">Order Summary</h3>
+</div>
+<div class="p-stack-lg">
+<div class="flex gap-stack-md items-start">
+<div class="w-24 h-24 rounded-lg bg-cover bg-center shrink-0" data-alt="A high-end modern silver laptop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPktcxed-aH5Wvze2fu5xYF4pvbUF-pO8OXmOwK-pYgAM8Z-Mgo6moBbE6xDByzIdGX9dCOXlERW1Cxwgcae6_pYYMvrGR2WKrlHmcYgfKCVVcbiAB55X4omJ-Y2j_R0pbecMzbxvQedgRfUlVQPa6hVp1D8d2nr2c074dhKeDB-L-UvAw7wGNPHJTg178awBPhiVwvfVWdZjac7I3eUBiK7CknhvScMxjhX_amNVtpRZNIGGqSqebpfusLEaGkP23KTh3jNaoLoY')"></div>
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="font-body-lg text-body-lg font-bold">MacBook Air M2</h4>
+<p class="font-headline-sm text-headline-sm">$850.00</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Starlight Edition • 256GB SSD • 8GB RAM</p>
+<div class="flex items-center gap-2 mt-3">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-metadata font-metadata">Like New</span>
+<span class="text-on-surface-variant font-metadata text-metadata">• 1 Item</span>
+</div>
+</div>
+</div>
+<div class="mt-stack-lg pt-stack-lg border-t border-outline-variant space-y-2">
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>$850.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Platform Fee</span>
+<span>$0.00 (Free for Students)</span>
+</div>
+<div class="flex justify-between font-body-lg text-body-lg font-bold pt-2">
+<span>Total Paid</span>
+<span class="text-primary">$850.00</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Seller & Actions -->
+<div class="space-y-stack-lg">
+<!-- Seller Profile Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-stack-lg">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">Seller Information</p>
+<div class="flex items-center gap-stack-md mb-6">
+<div class="w-14 h-14 rounded-full bg-cover bg-center border-2 border-primary-fixed-dim" data-alt="Seller portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCr-D3Z8yn0tel_ZrJkQ7DOHM7Jxzx3X9_r8BoA3wOiOzAT-_MNIxsrAAVbk1EHNiTaEzNYgfxLCSd54WT9jYq_7m1YyBymG0IWMcyb3eQQXzlUVDrEoAkOnGiABf-YOr9hUOxPT8n-xvvWTvJpFyZOGkgkX9l1eBftvfPo6NgbroW9PLWQf-NAWRQ5GdupjLabKfGxAbfKxo-npPcn3bgJShzvZZG5q9bX2EcloT3pJ3-W9Jy-lnwIbHxSTFwTZFP3dchDNTvDUCo')"></div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold flex items-center gap-1">
+                                    Alex Rivera
+                                    <span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;" title="Verified Student">verified</span>
+</h4>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-metadata text-metadata">4.9 (126 reviews)</span>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-primary/10 text-primary h-touch-target-min rounded-xl font-headline-sm text-headline-sm flex items-center justify-center gap-2 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">chat</span>
+                                Message Alex
+                            </button>
+<button class="w-full border border-outline-variant text-on-surface h-touch-target-min rounded-xl font-headline-sm text-headline-sm flex items-center justify-center gap-2 hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">call</span>
+                                Call via App
+                            </button>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 text-center">
+<p class="font-metadata text-metadata text-on-surface-variant">Joined 2021 • 42 items sold</p>
+</div>
+</section>
+<!-- Help & Safety -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-stack-lg shadow-sm">
+<h4 class="font-headline-sm text-headline-sm mb-4">Help &amp; Safety</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">security</span>
+<div>
+<p class="font-body-sm text-body-sm font-bold">Buyer Protection</p>
+<p class="font-metadata text-metadata text-on-surface-variant">Payment is held until you confirm pickup. Never pay outside the app.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant mt-0.5">report</span>
+<div>
+<p class="font-body-sm text-body-sm font-bold">Need Help?</p>
+<p class="font-metadata text-metadata text-on-surface-variant text-primary cursor-pointer hover:underline">Report an issue with this order</p>
+</div>
+</li>
+</ul>
+</section>
+<!-- Action Button -->
+<div class="hidden md:block">
+<button class="w-full py-4 border-2 border-dashed border-outline-variant rounded-xl text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low hover:border-primary transition-all flex flex-col items-center gap-2">
+<span class="material-symbols-outlined">help</span>
+                        Pickup Instructions
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-outline-variant px-2 pb-2 pt-2 h-16 shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-caps text-[10px]">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-2 py-1">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-caps text-[10px]">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-caps text-[10px]">Inbox</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[10px]">Profile</span>
+</button>
+</nav>
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const originalText = btn.innerHTML;
+                if(btn.innerText.includes('QR')) {
+                    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Loading...';
+                    setTimeout(() => { btn.innerHTML = originalText; }, 1000);
+                }
+            });
+        });
+    </script>
+</body></html>

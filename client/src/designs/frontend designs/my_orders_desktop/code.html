@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-fixed": "#410004",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#fffbff",
+                "primary-fixed-dim": "#68dba9",
+                "inverse-on-surface": "#befee3",
+                "on-tertiary-fixed-variant": "#7f2928",
+                "on-primary-container": "#f5fff7",
+                "on-secondary-container": "#476c5b",
+                "tertiary-fixed-dim": "#ffb3ae",
+                "secondary": "#416656",
+                "on-tertiary": "#ffffff",
+                "surface-dim": "#a8e7cd",
+                "on-background": "#002117",
+                "on-secondary-fixed-variant": "#294e3f",
+                "on-error-container": "#93000a",
+                "surface-variant": "#b0f0d6",
+                "tertiary-container": "#ba5551",
+                "inverse-primary": "#68dba9",
+                "tertiary": "#9b3e3b",
+                "surface-container-low": "#cbffe8",
+                "outline": "#6d7a72",
+                "on-primary-fixed-variant": "#005137",
+                "primary-fixed": "#85f8c4",
+                "primary": "#006948",
+                "on-secondary-fixed": "#002115",
+                "on-primary-fixed": "#002114",
+                "surface-tint": "#006c4a",
+                "secondary-container": "#c3ecd7",
+                "on-secondary": "#ffffff",
+                "on-surface-variant": "#3d4a42",
+                "surface-container": "#bbfbe1",
+                "outline-variant": "#bccac0",
+                "surface-container-high": "#b6f6db",
+                "surface-bright": "#FFFBF7",
+                "on-error": "#ffffff",
+                "on-surface": "#002117",
+                "secondary-fixed-dim": "#a8cfbc",
+                "inverse-surface": "#003829",
+                "secondary-fixed": "#c3ecd7",
+                "surface-container-highest": "#b0f0d6",
+                "tertiary-fixed": "#ffdad7",
+                "on-primary": "#ffffff",
+                "primary-container": "#00855d",
+                "background": "#FFFBF7",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "surface": "#FFFBF7",
+                "border-base": "#bccac0"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.5rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "2xl": "48px",
+                "xs": "4px",
+                "margin-mobile": "16px",
+                "sm": "8px",
+                "container-max": "1280px",
+                "gutter": "24px",
+                "base": "8px",
+                "lg": "24px",
+                "md": "16px",
+                "3xl": "64px",
+                "xl": "32px",
+                "touch-target-min": "48px",
+                "stack-lg": "24px",
+                "stack-md": "16px",
+                "stack-sm": "8px",
+                "margin-desktop": "24px"
+        },
+        "fontFamily": {
+                "title-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "label-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-md": ["Inter"],
+                "label-caps": ["Inter"],
+                "headline-sm": ["Inter"],
+                "metadata": ["Inter"],
+                "body-sm": ["Inter"]
+        },
+        "fontSize": {
+                "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .active-tab-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+        }
+        .order-card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-touch-target-min bg-surface dark:bg-on-background border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md text-primary tracking-tight">CampusMarket</h1>
+</div>
+<!-- Desktop Nav Items -->
+<nav class="hidden md:flex items-center gap-8 ml-auto mr-8 h-full">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Explore</a>
+<a class="text-primary font-label-caps text-label-caps relative h-full flex items-center" href="#">
+                My Orders
+                <div class="active-tab-indicator"></div>
+</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Messages</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filtering -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<div class="bg-surface-container-lowest rounded-xl p-stack-md shadow-sm sticky top-24 border border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm mb-4 text-on-surface">Manage Orders</h2>
+<nav class="space-y-1">
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-body-lg transition-all text-left">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+<span>Buying</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-body-lg transition-all text-left">
+<span class="material-symbols-outlined text-[20px]" data-icon="storefront">storefront</span>
+<span>Selling</span>
+</button>
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-body-lg transition-all text-left">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+<span>Watchlist</span>
+</button>
+</nav>
+<div class="my-6 border-t border-outline-variant"></div>
+<h3 class="font-label-caps text-label-caps text-outline mb-3 uppercase tracking-wider">Status Filter</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface-variant group-hover:text-primary transition-colors">Active Orders</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface-variant group-hover:text-primary transition-colors">Completed</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-sm text-on-surface-variant group-hover:text-primary transition-colors">Canceled</span>
+</label>
+</div>
+<div class="mt-8 bg-surface-container-low p-4 rounded-lg">
+<p class="text-metadata text-on-surface-variant leading-relaxed">
+                            Need help with an order? Check our <a class="text-primary font-semibold underline" href="#">Safety Guide</a> for secure transactions.
+                        </p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-grow">
+<div class="flex items-center justify-between mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">My Orders</h2>
+<p class="text-body-lg text-outline">Track your campus marketplace activity</p>
+</div>
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-body-sm w-64" placeholder="Search orders..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Order List -->
+<div class="space-y-4">
+<!-- Order Card 1: Pending -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 order-card-hover">
+<div class="p-stack-md flex flex-col md:flex-row gap-gutter items-start md:items-center">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A clean product shot of a high-end graphing calculator on a minimalist white desk with soft sunlight hitting it. The aesthetic is corporate and modern, mirroring the marketplace's clean white and blue theme. The lighting is crisp, professional, and bright, conveying a sense of academic reliability and trust for a campus setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC9-nDz5fdDjivr8S4o_ua5O1uubheowgQ9pY3BIbf5YAMzaoBe6OxdIwYpq5GszPMP8Rrns-ntHKG7_YQyu35WtoSnLx98qtRssICYsmxVvnnN5QLM18U-MxjpCiK1rYt93nGD48Td9Ml2Y57a11Y333Ah5RXwNA36Tgqh5FN6LhKUUxRpITd-EBQTEd9l2-sBlxeOYLXGyhMElmHVBGgiA_eVwYbidXmefwvOo4u7PcQN2ybRFmOm0d-i4pJ_5bZMG6tvZRIeWc"/>
+</div>
+<div class="flex-grow space-y-1">
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-label-caps font-label-caps px-2 py-0.5 rounded uppercase">Pending Pickup</span>
+<span class="text-metadata text-outline">Order #CM-4921</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">TI-84 Plus CE Graphing Calculator</h3>
+<p class="text-body-sm text-on-surface-variant flex items-center gap-1">
+                                    Seller: <span class="text-primary font-semibold">David W.</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-3 w-full md:w-auto">
+<p class="font-headline-md text-headline-md text-primary">$85.00</p>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 border border-primary text-primary font-label-caps text-label-caps rounded-lg hover:bg-primary/10 transition-colors">
+                                        Message Seller
+                                    </button>
+<button class="flex-1 md:flex-none px-4 py-2 bg-primary text-white font-label-caps text-label-caps rounded-lg hover:brightness-90 transition-colors shadow-sm">
+                                        Confirm Pickup
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Card 2: Completed -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 order-card-hover opacity-90">
+<div class="p-stack-md flex flex-col md:flex-row gap-gutter items-start md:items-center">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-low grayscale-[0.3]">
+<img class="w-full h-full object-cover" data-alt="A trendy minimalist ergonomic desk chair with a clean grey mesh fabric and white frame, photographed against a neutral campus dorm background. The shot is bright with soft ambient lighting, matching a clean corporate design system. The mood is efficient and modern, representing a successful marketplace transaction for student furniture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Wd41lySSN4XSCxETUYCeQiFz2OJPqbDDvO7gBVcLCSnD_snPRQdSp1ktozRR3HBdJ3rso2kCaqlBYR__BlelL1MmcsP8iJ8mzGaH7ZC_PgOTX2HnMkzMYwvSDb4eR42oCM8g9HUbwYl6f0yheQ_LghK6Mq0fslOIic5GyOwUYP4q2cbShI_sTbAZTLptEXOwkMSRLf0b9J9pK3hkUAdV2qnJd9rPDw_elX2fGefkRh6VW6SbuILvxmL72jIiRLNXDkVzyKZC-aA"/>
+</div>
+<div class="flex-grow space-y-1">
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-highest text-on-surface-variant text-label-caps font-label-caps px-2 py-0.5 rounded uppercase">Completed</span>
+<span class="text-metadata text-outline">Order #CM-3882</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Ergonomic Office Chair</h3>
+<p class="text-body-sm text-on-surface-variant flex items-center gap-1">
+                                    Seller: <span class="text-primary font-semibold">Sarah L.</span>
+</p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-3 w-full md:w-auto">
+<p class="font-headline-md text-headline-md text-on-surface">$45.00</p>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps rounded-lg hover:bg-surface-container-low transition-colors">
+                                        View Details
+                                    </button>
+<button class="flex-1 md:flex-none px-4 py-2 bg-secondary text-white font-label-caps text-label-caps rounded-lg hover:opacity-90 transition-colors shadow-sm">
+                                        Leave Review
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Card 3: Processing -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 order-card-hover">
+<div class="p-stack-md flex flex-col md:flex-row gap-gutter items-start md:items-center">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A stack of clean, professional-looking university textbooks for advanced biology and chemistry, neatly stacked on a wooden library table. The lighting is natural and bright, highlighting the crisp covers. The atmosphere is academic, trustworthy, and clear, fitting a campus-centered marketplace aesthetic with high contrast and minimalist styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1zGW-r0gL3SuICpbujEnQnxyIwFH01gCYLafgIuV7jYXkRbq39loUKM7GHNR2ZYrZLtxtvx7RnGsbTQMv6nibDZZLdsulva8t8x-v6tYKORL1FIILs0VE3CYkPEv5m_lhQzcqWMyzKhU6WJ4og9KV1RYScrL_rSz6GTY8YQbG_6kEwPSUnuSQMz9OQ4UHFPiB923b6JDZB89swKpcr7fkan9ju68H6cuLYjPq5tqoZRMz2cl-N_K8Nm2GCYg2GmuiW9TgJPINPRA"/>
+</div>
+<div class="flex-grow space-y-1">
+<div class="flex items-center gap-2">
+<span class="bg-primary-container/20 text-primary text-label-caps font-label-caps px-2 py-0.5 rounded uppercase">Processing</span>
+<span class="text-metadata text-outline">Order #CM-5012</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Biology &amp; Chem Textbook Set</h3>
+<p class="text-body-sm text-on-surface-variant flex items-center gap-1">
+                                    Seller: <span class="text-primary font-semibold">Prof. Marcus</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-3 w-full md:w-auto">
+<p class="font-headline-md text-headline-md text-primary">$120.00</p>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 border border-primary text-primary font-label-caps text-label-caps rounded-lg hover:bg-primary/10 transition-colors">
+                                        Contact Support
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State / Pagination Placeholder -->
+<div class="py-8 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-outline text-[32px]" data-icon="history">history</span>
+</div>
+<p class="text-body-lg text-outline">Showing 3 of 12 orders</p>
+<button class="mt-4 px-6 py-2 border border-outline-variant rounded-full text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low transition-all">
+                            Load Older Orders
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-on-background px-2 pb-2 pt-2 h-16 border-t border-outline-variant shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-caps text-label-caps mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-[32px]" data-icon="add_circle">add_circle</span>
+<span class="font-label-caps text-label-caps">Sell</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-caps text-label-caps mt-1">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-2 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for checkboxes and list items
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const container = document.querySelector('section .space-y-4');
+                container.style.opacity = '0.5';
+                setTimeout(() => {
+                    container.style.opacity = '1';
+                }, 300);
+            });
+        });
+
+        // Search bar interaction
+        const searchInput = document.querySelector('input[placeholder="Search orders..."]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.classList.add('w-80');
+        });
+        searchInput.addEventListener('blur', () => {
+            if (searchInput.value === '') {
+                searchInput.classList.remove('w-80');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,62 @@
+/* ─── Mobile Bottom Nav ──────────────────────────────────── */
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border-base);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: var(--space-sm) var(--space-sm) var(--space-sm);
+    z-index: 50;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-on-surface-variant);
+  transition: all var(--transition-fast);
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  min-width: 48px;
+}
+
+.mobile-nav-item:active {
+  transform: scale(0.9);
+}
+
+.mobile-nav-item.active {
+  color: var(--color-primary);
+  background-color: rgba(5, 150, 105, 0.1);
+}
+
+.mobile-nav-label {
+  font-size: var(--font-size-label-caps);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Sell button special style */
+.mobile-nav-sell .mobile-nav-sell-icon {
+  font-size: 32px;
+  color: var(--color-primary);
+}
+
+.mobile-nav-sell .mobile-nav-label {
+  color: var(--color-on-surface-variant);
+}

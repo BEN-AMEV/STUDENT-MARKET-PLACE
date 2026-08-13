@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Account | CampusMarket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 251, 247, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#410004",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed-dim": "#68dba9",
+                        "inverse-on-surface": "#befee3",
+                        "on-tertiary-fixed-variant": "#7f2928",
+                        "on-primary-container": "#f5fff7",
+                        "on-secondary-container": "#476c5b",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        "secondary": "#416656",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#a8e7cd",
+                        "on-background": "#002117",
+                        "on-secondary-fixed-variant": "#294e3f",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#b0f0d6",
+                        "tertiary-container": "#ba5551",
+                        "inverse-primary": "#68dba9",
+                        "tertiary": "#9b3e3b",
+                        "surface-container-low": "#cbffe8",
+                        "outline": "#6d7a72",
+                        "on-primary-fixed-variant": "#005137",
+                        "primary-fixed": "#85f8c4",
+                        "primary": "#059669",
+                        "on-secondary-fixed": "#002115",
+                        "on-primary-fixed": "#002114",
+                        "surface-tint": "#059669",
+                        "secondary-container": "#c3ecd7",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#3d4a42",
+                        "surface-container": "#bbfbe1",
+                        "outline-variant": "#bccac0",
+                        "surface-container-high": "#b6f6db",
+                        "surface-bright": "#FFFBF7",
+                        "on-error": "#ffffff",
+                        "on-surface": "#002117",
+                        "secondary-fixed-dim": "#a8cfbc",
+                        "inverse-surface": "#003829",
+                        "secondary-fixed": "#c3ecd7",
+                        "surface-container-highest": "#b0f0d6",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#059669",
+                        "background": "#FFFBF7",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#FFFBF7",
+                        "primary-hover": "#047857",
+                        "text-dark": "#002117",
+                        "border-base": "#bccac0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "metadata": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md-mobile": ["18px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-lg">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-touch-target-min bg-surface border-b border-border-base shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md text-primary tracking-tight">CampusMarket</h1>
+</div>
+<div class="hidden md:flex gap-stack-lg items-center">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Explore</a>
+<a class="text-primary font-label-caps text-label-caps border-b-2 border-primary pb-1" href="#">Create Account</a>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="search">search</button>
+</header>
+<!-- Main Content Grid -->
+<main class="min-h-screen pt-24 pb-12 flex items-center justify-center px-margin-desktop">
+<div class="max-w-[1200px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Side: Benefits -->
+<section class="lg:col-span-7 space-y-8 order-2 lg:order-1">
+<div class="space-y-4">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-caps font-label-caps">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" data-weight="fill">verified</span>
+                    Exclusive Student Network
+                </span>
+<h2 class="font-headline-lg text-headline-lg text-text-dark max-w-lg">Unlock a safer, smarter way to trade on campus.</h2>
+<p class="text-body-lg text-on-surface-variant max-w-md">Join thousands of verified students buying and selling everything from textbooks to furniture with peace of mind.</p>
+</div>
+<!-- Benefits Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Feature 1 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-border-base shadow-sm hover:shadow-md transition-shadow group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">Verified .edu Only</h3>
+<p class="text-body-sm text-on-surface-variant">We strictly verify university emails to ensure every user is an actual student or faculty member.</p>
+</div>
+<!-- Feature 2 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-border-base shadow-sm hover:shadow-md transition-shadow group">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary" data-icon="shield_person">shield_person</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">Safe Campus Meetups</h3>
+<p class="text-body-sm text-on-surface-variant">Integrated campus map highlights designated safe swap zones monitored by university security.</p>
+</div>
+<!-- Feature 3 -->
+<div class="md:col-span-2 p-6 rounded-xl bg-primary text-on-primary flex flex-col md:flex-row gap-6 items-center">
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm mb-2">Build Your Campus Reputation</h3>
+<p class="text-body-sm opacity-90">Every successful trade boosts your student rating, making it easier for you to sell items faster and buy with confidence.</p>
+</div>
+<div class="flex -space-x-4">
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up headshot of a diverse college student smiling warmly, professional studio lighting, clean soft background, modern high-contrast aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7q_qztba19cGiBo9B5Mzkl_30bfZJiKLfND_nrv16nM0EmZ2SrW-1xDrVaVeWjc4WVHMtGSnqINqXk16h19IgUFfcpcxOtd0zibDtS3r8WQw9pfX2uRq2hXcIoPlbEhR3Ieb0C-cavdS_6SDoh5yiuwFO-mipagVaP3a0t9Hk8faiEfmRrLCUmDameN1DYlMrpSCv37Ga68mBHhmL6ewr48jXnPt8QRtXgIG2QoabFp2wK0okwNMeGNjS17BClKpqyQskVmRnYtU"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male university student in a library setting, wearing a stylish denim jacket, soft bokeh background of bookshelves, high-quality professional photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATNMVz_k39x84KBV8s_C6HB_oB-5Lxoqh_B25y3JO1wuNCv9I6Z21MeDE4_B51aUO79cvuwi9Dj05qZDfOEiq-7c0_NhQ5l9cSGRNVu8dgsqYapbfUu4PMQMg5PVI6zmiUb6sAr82eUyIMmcjAUQeVH4YSYcN_R2X9uLwg-ENXLl5Iet6lkQd5hasFyG0sVf3Q2bEb00d46qT_VMxzBZeqPw1CGGzD21xq2m31tKGcen0ThorOrGWyEWNlvVK6AdFsdfeYhSgvroY"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A young female student with glasses and a friendly expression, outdoor campus setting with natural golden hour light, vibrant corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE31yD1SAAl9CL2fzHAJ-bal7l2VvawQuAAsHFVFnBegq4H6I7tac4Jxl8tNdlEJ48C-Xc4GpR_Uq5feW2WrS4UrKEt-9rW03Uou5I1ChOs3DPAMaoewRGo_vw354X8a1NWNCZfvfM7TfM0F2on_gdjNdaiO4Pq-ywhaLOlHe3pYY6baM97KAexelF1y55BGrtHJcwMSpYu0oFU1cLhjQB-OXV91VZSAj6D_Relgy_ubVZaRmjFRVC-gOpb-Gneei6enJm_KMLK4M"/>
+</div>
+<div class="w-10 h-10 rounded-full bg-on-primary text-primary flex items-center justify-center text-xs font-bold">+12k</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Registration Form -->
+<section class="lg:col-span-5 order-1 lg:order-2 sticky top-24">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-lg border border-border-base">
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md text-text-dark">Join CampusMarket</h2>
+<p class="text-body-sm text-on-surface-variant mt-1">Ready to start trading? It only takes a minute.</p>
+</div>
+<form class="space-y-6" id="registrationForm">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-on-surface-variant" for="fullName">Full Name</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="person">person</span>
+<input class="w-full pl-10 pr-4 h-12 bg-background border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline/50" id="fullName" name="fullName" placeholder="Jane Doe" required="" type="text"/>
+</div>
+</div>
+<!-- University Email -->
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-on-surface-variant" for="email">University Email (.edu)</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="mail">mail</span>
+<input class="w-full pl-10 pr-4 h-12 bg-background border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline/50" id="email" name="email" placeholder="jane.doe@university.edu" required="" type="email"/>
+</div>
+<p class="text-metadata text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="info">info</span>
+                            Must end in .edu to be verified.
+                        </p>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-on-surface-variant" for="password">Password</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="lock">lock</span>
+<input class="w-full pl-10 pr-12 h-12 bg-background border border-border-base rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline/50" id="password" name="password" placeholder="Min. 8 characters" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" data-icon="visibility" id="passToggle">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start gap-3 pt-2">
+<input class="mt-1 w-4 h-4 text-primary border-border-base rounded focus:ring-primary" id="terms" required="" type="checkbox"/>
+<label class="text-body-sm text-on-surface-variant" for="terms">
+                            I agree to the <a class="text-primary font-semibold hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-semibold hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<!-- Submit -->
+<button class="w-full h-12 bg-primary hover:bg-primary-hover text-on-primary font-headline-sm rounded-lg shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 pt-6 border-t border-border-base text-center">
+<p class="text-body-sm text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline" href="#">Log in</a>
+</p>
+</div>
+</div>
+<!-- Trust Badge -->
+<div class="mt-6 flex items-center justify-center gap-stack-md opacity-60">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="text-metadata font-label-caps">Secure SSL</span>
+</div>
+<div class="w-1 h-1 bg-outline rounded-full"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_reset">lock_reset</span>
+<span class="text-metadata font-label-caps">Encrypted</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Background Decorative Elements -->
+<div class="fixed top-0 right-0 -z-10 w-1/2 h-screen opacity-10 pointer-events-none">
+<div class="absolute top-[20%] right-[10%] w-64 h-64 bg-primary rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[20%] right-[30%] w-96 h-96 bg-secondary-container rounded-full blur-[140px]"></div>
+</div>
+<script>
+    function togglePassword() {
+        const passInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('passToggle');
+        if (passInput.type === 'password') {
+            passInput.type = 'text';
+            toggleIcon.innerText = 'visibility_off';
+        } else {
+            passInput.type = 'password';
+            toggleIcon.innerText = 'visibility';
+        }
+    }
+
+    document.getElementById('registrationForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        
+        // Interaction Feedback
+        btn.innerHTML = `<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Processing...`;
+        btn.disabled = true;
+        
+        setTimeout(() => {
+            btn.innerHTML = `<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> Welcome to Campus!`;
+            btn.classList.replace('bg-primary', 'bg-secondary');
+        }, 1500);
+    });
+</script>
+</body></html>

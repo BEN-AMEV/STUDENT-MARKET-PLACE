@@ -1,0 +1,460 @@
+/* ═══════════════════════════════════════════════════════════
+   Admin Dashboard — Styles
+   ═══════════════════════════════════════════════════════════ */
+
+.admin-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* ─── Header ────────────────────────────────────────────── */
+.admin-header {
+  margin-bottom: var(--space-xl);
+}
+
+.admin-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.admin-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+}
+
+.admin-title .material-symbols-outlined {
+  font-size: 28px;
+  color: var(--color-primary);
+}
+
+.admin-subtitle {
+  color: var(--color-on-surface-variant);
+  margin-top: var(--space-xs);
+  font-size: 0.9375rem;
+}
+
+/* ─── Stats Row ─────────────────────────────────────────── */
+.admin-stats {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.admin-stat-card {
+  flex: 1;
+  min-width: 140px;
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.admin-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.admin-stat-icon--pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.admin-stat-icon--approved {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.admin-stat-icon--rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.admin-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  line-height: 1;
+}
+
+.admin-stat-label {
+  font-size: 0.8125rem;
+  color: var(--color-on-surface-variant);
+  margin-top: 2px;
+}
+
+/* ─── Filter Tabs ───────────────────────────────────────── */
+.admin-filter-tabs {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-outline-variant);
+  padding-bottom: 0;
+}
+
+.admin-filter-tab {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-filter-tab:hover {
+  color: var(--color-on-surface);
+}
+
+.admin-filter-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.admin-filter-count {
+  font-size: 0.75rem;
+  background: var(--color-surface-container);
+  padding: 1px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+.admin-filter-tab.active .admin-filter-count {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* ─── Verification Queue ────────────────────────────────── */
+.admin-queue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.admin-queue-empty {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-lg);
+  color: var(--color-on-surface-variant);
+}
+
+.admin-queue-empty .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--color-outline);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.admin-queue-empty h4 {
+  font-size: 1.125rem;
+  color: var(--color-on-surface);
+  margin-bottom: var(--space-xs);
+}
+
+/* ─── Verification Card ─────────────────────────────────── */
+.admin-verif-card {
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.admin-verif-card:hover {
+  box-shadow: var(--elevation-1);
+}
+
+.admin-verif-card-body {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .admin-verif-card-body {
+    flex-direction: column;
+  }
+}
+
+/* Student ID Image */
+.admin-verif-image {
+  flex-shrink: 0;
+  width: 180px;
+  height: 120px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface-container);
+  cursor: pointer;
+  position: relative;
+}
+
+.admin-verif-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.admin-verif-image:hover img {
+  transform: scale(1.05);
+}
+
+.admin-verif-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.admin-verif-image:hover .admin-verif-image-overlay {
+  opacity: 1;
+}
+
+.admin-verif-image-overlay .material-symbols-outlined {
+  color: #fff;
+  font-size: 28px;
+}
+
+.admin-verif-no-image {
+  width: 180px;
+  height: 120px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-verif-no-image .material-symbols-outlined {
+  font-size: 36px;
+  color: var(--color-outline);
+}
+
+/* Info section */
+.admin-verif-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-verif-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  margin-bottom: 2px;
+}
+
+.admin-verif-email {
+  font-size: 0.8125rem;
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--space-sm);
+}
+
+.admin-verif-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.admin-verif-detail {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8125rem;
+  color: var(--color-on-surface-variant);
+}
+
+.admin-verif-detail .material-symbols-outlined {
+  font-size: 16px;
+}
+
+/* Actions */
+.admin-verif-actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-verif-actions .btn {
+  font-size: 0.8125rem;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-approve {
+  background: #059669;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-approve:hover {
+  background: #047857;
+}
+
+.btn-approve:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-reject {
+  background: none;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-reject:hover {
+  background: #fee2e2;
+}
+
+.btn-reject:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Rejection Note Input */
+.admin-reject-section {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  width: 100%;
+}
+
+.admin-reject-input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: inherit;
+}
+
+.admin-reject-input::placeholder {
+  color: var(--color-outline);
+}
+
+.admin-reject-input:focus {
+  outline: none;
+  border-color: #dc2626;
+}
+
+/* Status badge */
+.admin-verif-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.admin-verif-status--approved {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.admin-verif-status--rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.admin-verif-note {
+  font-size: 0.8125rem;
+  color: var(--color-on-surface-variant);
+  font-style: italic;
+  margin-top: var(--space-xs);
+}
+
+/* ─── Image Lightbox ────────────────────────────────────── */
+.admin-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  animation: fadeIn 0.2s ease;
+}
+
+.admin-lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--radius-lg);
+  object-fit: contain;
+}
+
+.admin-lightbox-close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.admin-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Loading Spinner ───────────────────────────────────── */
+.admin-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xxl);
+  color: var(--color-primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

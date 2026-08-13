@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusMarket | University Peer-to-Peer Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-fixed": "#410004",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#fffbff",
+                "primary-fixed-dim": "#68dba9",
+                "inverse-on-surface": "#befee3",
+                "on-tertiary-fixed-variant": "#7f2928",
+                "on-primary-container": "#f5fff7",
+                "on-secondary-container": "#476c5b",
+                "tertiary-fixed-dim": "#ffb3ae",
+                "secondary": "#416656",
+                "on-secondary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "surface-dim": "#a8e7cd",
+                "on-background": "#002117",
+                "on-secondary-fixed-variant": "#294e3f",
+                "on-error-container": "#93000a",
+                "surface-variant": "#b0f0d6",
+                "tertiary-container": "#ba5551",
+                "inverse-primary": "#68dba9",
+                "tertiary": "#9b3e3b",
+                "surface-container-low": "#cbffe8",
+                "outline": "#6d7a72",
+                "on-primary-fixed-variant": "#005137",
+                "primary-fixed": "#85f8c4",
+                "primary": "#059669",
+                "primary-hover": "#047857",
+                "on-secondary-fixed": "#002115",
+                "on-primary-fixed": "#002114",
+                "surface-tint": "#006c4a",
+                "secondary-container": "#c3ecd7",
+                "on-surface-variant": "#3d4a42",
+                "surface-container": "#bbfbe1",
+                "outline-variant": "#bccac0",
+                "surface-container-high": "#b6f6db",
+                "surface-bright": "#FFFBF7",
+                "on-error": "#ffffff",
+                "on-surface": "#002117",
+                "secondary-fixed-dim": "#a8cfbc",
+                "inverse-surface": "#003829",
+                "secondary-fixed": "#c3ecd7",
+                "surface-container-highest": "#b0f0d6",
+                "tertiary-fixed": "#ffdad7",
+                "on-primary": "#ffffff",
+                "primary-container": "#059669",
+                "background": "#FFFBF7",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff",
+                "surface": "#FFFBF7",
+                "border-base": "#bccac0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "touch-target-min": "44px",
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "margin-desktop": "24px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "metadata": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md-mobile": ["18px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #FFFBF7; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glass-card {
+            background: rgba(255, 251, 247, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-touch-target-min bg-surface border-b border-border-base">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md text-primary">CampusMarket</h1>
+</div>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-label-caps text-label-caps hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Home</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Sell</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Inbox</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95 duration-150" data-icon="search">search</button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-xl font-label-caps text-label-caps hover:bg-primary-hover transition-all active:scale-95">LIST ITEM</button>
+</div>
+</header>
+<main class="pt-20 pb-12 max-w-[1280px] mx-auto px-margin-desktop">
+<!-- Hero Section -->
+<section class="relative rounded-3xl overflow-hidden mb-stack-lg h-[320px] flex items-center justify-center bg-primary">
+<div class="relative z-10 text-center w-full max-w-2xl px-6">
+<h2 class="font-headline-lg text-headline-lg text-on-primary mb-6 drop-shadow-sm">Find everything you need for campus life.</h2>
+<div class="flex items-center bg-surface-container-lowest rounded-2xl p-2 shadow-lg">
+<span class="material-symbols-outlined text-outline px-3" data-icon="search">search</span>
+<input class="flex-grow border-none focus:ring-0 text-body-lg font-body-lg text-on-surface bg-transparent" placeholder="Search textbooks, dorm decor, bikes..." type="text"/>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-headline-sm hover:bg-primary-hover transition-all">Search</button>
+</div>
+<div class="flex flex-wrap justify-center gap-2 mt-6">
+<span class="text-label-caps font-label-caps text-on-primary opacity-80 uppercase">Trending:</span>
+<a class="bg-white/20 text-on-primary px-3 py-1 rounded-full text-metadata font-metadata hover:bg-white/30 transition-colors" href="#">Calculus TB</a>
+<a class="bg-white/20 text-on-primary px-3 py-1 rounded-full text-metadata font-metadata hover:bg-white/30 transition-colors" href="#">Mini Fridge</a>
+<a class="bg-white/20 text-on-primary px-3 py-1 rounded-full text-metadata font-metadata hover:bg-white/30 transition-colors" href="#">IClicker</a>
+</div>
+</div>
+</section>
+<!-- Main Content Layout -->
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar: Categories & Filters -->
+<aside class="hidden md:block w-64 flex-shrink-0">
+<div class="sticky top-24 space-y-stack-lg">
+<div class="bg-surface-container-lowest rounded-2xl p-stack-md shadow-sm border border-border-base">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 tracking-widest">CATEGORIES</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary font-body-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="grid_view">grid_view</span>
+                                All Items
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low font-body-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="menu_book">menu_book</span>
+                                Textbooks
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low font-body-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="chair">chair</span>
+                                Furniture
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low font-body-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="devices">devices</span>
+                                Electronics
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low font-body-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="checkroom">checkroom</span>
+                                Clothing
+                            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low font-body-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="directions_bike">directions_bike</span>
+                                Transport
+                            </a>
+</nav>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-stack-md shadow-sm border border-border-base">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 tracking-widest">VERIFICATION</h3>
+<div class="flex items-center gap-3 p-3 bg-secondary-container/20 rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div class="flex flex-col">
+<span class="text-body-sm font-semibold text-on-secondary-container">Student Verified</span>
+<span class="text-metadata text-on-secondary-container opacity-70">Shop with confidence</span>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-2xl p-stack-md border border-primary/20">
+<h3 class="font-label-caps text-label-caps text-primary mb-2">SELL YOUR STUFF</h3>
+<p class="text-body-sm text-on-surface-variant mb-4">Empty your dorm and fill your wallet. List in seconds.</p>
+<button class="w-full bg-primary text-on-primary py-2 rounded-xl font-label-caps text-label-caps hover:bg-primary-hover transition-colors">Start Selling</button>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md">Recently Listed</h2>
+<div class="flex items-center gap-2">
+<span class="text-body-sm text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none text-body-sm font-semibold text-primary focus:ring-0 cursor-pointer">
+<option>Newest Arrivals</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-border-base flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-quality studio photograph of a contemporary white ergonomic desk chair with grey accents, set against a minimalist clean university dorm room background with soft morning light streaming through a window." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKSYxVREmorbepPumbCkLYmpnU5UX2pdKia1MHtNYmJhq4d44YguONVTPIK49_xxNM1qG3hyOkxpA_c411IfuERUZOWri7qM8G5aM-erM3xDQX5HuMQI4gZH6Q2x9yxH146P7qKvQmQQhTbaLNFF2-1DMCTsbFd0k3S-bqA1laz0GrmuI7m_Y5qrGv_p7No9Z72YzfRgr4fN-XuJCes3v97xTLiHLMYMsZZUdtdcwm_FJqI3YuFT42xItnM6lmaiN62_JWNZmwz7Y"/>
+<button class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-primary text-on-primary px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-metadata font-semibold">Verified</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-metadata text-outline font-label-caps uppercase tracking-tight mb-1">Furniture</span>
+<h3 class="text-body-lg font-semibold text-on-surface mb-2 line-clamp-1">Ergonomic Office Chair</h3>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-headline-sm font-headline-sm text-primary">$45</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="text-metadata">North Hall</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-border-base flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, close-up shot of a calculus textbook titled Calculus Early Transcendentals on a rustic wooden library table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEF7y-QXhzNdi-L225kQZADFyEWdrj2qJJISBnDIOKk6VGyB0t804Nv0UJxRavItNv0tzh5jIblxEC7j6PHtWsquz9YHt3v9MwpGxD7MGYxoECWPF1CMnRYm8RH8ew093U2BJDpBEhI8X1vFuCgyzHfp87NXqoX5O-nNvM0nXC9xUnx9fmCskDxXYW_oCUZgxbn5C_s_EfkqjuZxRpzPS13HV3nMZCCBPW-5VjMsLPcfn_WWlyp20AQ2HsFsMSCJQ_T6Z5h01pliA"/>
+<button class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+<div class="absolute top-3 left-3 bg-primary text-on-primary px-2 py-0.5 rounded-lg text-metadata font-bold shadow-sm">NEW</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-metadata text-outline font-label-caps uppercase tracking-tight mb-1">Textbooks</span>
+<h3 class="text-body-lg font-semibold text-on-surface mb-2 line-clamp-1">Calculus Early Transcendentals 9th Ed</h3>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-headline-sm font-headline-sm text-primary">$80</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="text-metadata">Library Central</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-border-base flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stylish, vintage-style navy blue cruiser bicycle leaning against a red brick campus wall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_qiR862NjQRZls7O1vh0P5lbilewyRIARqTor83vLQa-93ytoY4QfqH55eCvjm2kedCRKDR8sUwvgC3TtkJNNSQrSr9xb7LG0FxofCM8XdAqD6uL46LTyw81P6UqwUxzb3WwFzv7K2uNTkFVwAhkhReL0ro1y8KhbAsBRwu0_q-92p9VdL_8N1yiJ0an_LWmR8dx_rCuHn4uaTg7WTC0xpyiDhQLM6CzoFb64jZ3VBZyTilTYbvYYrwzpykaA4gKWkrjpS7k0vh4"/>
+<button class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-metadata text-outline font-label-caps uppercase tracking-tight mb-1">Transport</span>
+<h3 class="text-body-lg font-semibold text-on-surface mb-2 line-clamp-1">Navy Blue Cruiser Bike</h3>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-headline-sm font-headline-sm text-primary">$120</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="text-metadata">Bike Racks - Eng</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-border-base flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern, compact silver microwave oven sitting on a clean granite countertop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZuGxil5toOeb7Ai-blNgK88LB1Xo3m_T-oT_cR_cfK6C2_g7tGUAWbaYtOzStdI013dTqQbS2fjEPLiF8stdP7NR0sTp9_fA95Z2vGDGgedlP0PndPU7611PFj7Q_YWIsw-sn8C6mbXikkdj_R3-od_dutaZFk48x3mQMryHCi27xdMajw7xWO-LAxKli0gVkIMI04wH2Td18Nn8jv1zWk0mo9u6Bjx-QR_mjUOLVm_ZGa9suicS7B8votjhVNSX6IDci0TdAKqI"/>
+<button class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md p-2 rounded-full text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-metadata text-outline font-label-caps uppercase tracking-tight mb-1">Electronics</span>
+<h3 class="text-body-lg font-semibold text-on-surface mb-2 line-clamp-1">Panasonic 700W Microwave</h3>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-headline-sm font-headline-sm text-primary">$30</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span class="text-metadata">West Commons</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 8 Promotional -->
+<div class="group relative overflow-hidden rounded-2xl bg-primary shadow-lg border border-primary flex flex-col justify-center items-center text-center p-6 lg:col-span-1">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-[48px] text-on-primary mb-4" data-icon="campaign">campaign</span>
+<h3 class="text-headline-sm font-headline-sm text-on-primary mb-2">Want to boost your post?</h3>
+<p class="text-body-sm text-on-primary opacity-90 mb-6">Verified sellers get 2x more views on their listings.</p>
+<button class="bg-surface-container-lowest text-primary px-4 py-2 rounded-xl font-label-caps text-label-caps hover:bg-surface-container-low transition-all">Get Verified Now</button>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-12 flex justify-center">
+<button class="border border-border-base bg-surface-container-lowest text-on-surface px-8 py-3 rounded-xl font-headline-sm hover:bg-surface-container-low transition-colors active:scale-95">Show More Items</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Area -->
+<footer class="bg-surface-container-low border-t border-border-base mt-20 py-12">
+<div class="max-w-[1280px] mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-4">CampusMarket</h2>
+<p class="text-body-sm text-on-surface-variant mb-6">The safest and easiest way to buy and sell items within your university community.</p>
+<div class="flex gap-4">
+<a class="text-outline hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="public">public</span></a>
+<a class="text-outline hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="alternate_email">alternate_email</span></a>
+<a class="text-outline hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-6 uppercase">Company</h4>
+<ul class="space-y-3">
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Student Safety</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-6 uppercase">Support</h4>
+<ul class="space-y-3">
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Report a User</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Safety Tips</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Dispute Resolution</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface mb-6 uppercase">Join the Beta</h4>
+<p class="text-body-sm text-on-surface-variant mb-4">Be the first to know when we launch at new campuses.</p>
+<div class="flex flex-col gap-2">
+<input class="bg-surface-container-lowest border-border-base rounded-xl px-4 py-2 text-body-sm focus:ring-primary focus:border-primary" placeholder="edu email address" type="email"/>
+<button class="bg-primary text-on-primary py-2 rounded-xl text-label-caps font-label-caps hover:bg-primary-hover">Sign Up</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-desktop mt-12 pt-8 border-t border-border-base flex justify-between items-center text-metadata text-outline">
+<span>© 2024 CampusMarket Inc. Built for Students.</span>
+<div class="flex gap-4">
+<a class="hover:text-primary" href="#">English (US)</a>
+<a class="hover:text-primary" href="#">USD ($)</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-border-base px-2 pb-2 pt-2 h-16 shadow-sm">
+<div class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-caps text-label-caps">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="add_circle">add_circle</span>
+<span class="font-label-caps text-label-caps">Sell</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-caps text-label-caps">Inbox</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</div>
+</nav>
+<script>
+        document.querySelectorAll('button .material-symbols-outlined[data-icon="favorite"]').forEach(btn => {
+            btn.parentElement.addEventListener('click', (e) => {
+                e.preventDefault();
+                const icon = btn;
+                const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+                icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                icon.classList.toggle('text-error', !isFilled);
+            });
+        });
+
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-2', 'ring-primary');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-2', 'ring-primary');
+            });
+        }
+    </script>
+</body></html>

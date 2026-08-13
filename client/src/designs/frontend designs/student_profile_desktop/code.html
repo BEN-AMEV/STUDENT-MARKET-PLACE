@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#410004",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#fffbff",
+            "primary-fixed-dim": "#68dba9",
+            "inverse-on-surface": "#befee3",
+            "on-tertiary-fixed-variant": "#7f2928",
+            "on-primary-container": "#f5fff7",
+            "on-secondary-container": "#476c5b",
+            "tertiary-fixed-dim": "#ffb3ae",
+            "secondary": "#416656",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#a8e7cd",
+            "on-background": "#002117",
+            "on-secondary-fixed-variant": "#294e3f",
+            "on-error-container": "#93000a",
+            "surface-variant": "#b0f0d6",
+            "tertiary-container": "#ba5551",
+            "inverse-primary": "#68dba9",
+            "tertiary": "#9b3e3b",
+            "surface-container-low": "#cbffe8",
+            "outline": "#6d7a72",
+            "on-primary-fixed-variant": "#005137",
+            "primary-fixed": "#85f8c4",
+            "primary": "#059669",
+            "primary-hover": "#047857",
+            "on-secondary-fixed": "#002115",
+            "on-primary-fixed": "#002114",
+            "surface-tint": "#059669",
+            "secondary-container": "#c3ecd7",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#3d4a42",
+            "surface-container": "#bbfbe1",
+            "outline-variant": "#bccac0",
+            "surface-container-high": "#b6f6db",
+            "surface-bright": "#e7fff3",
+            "on-error": "#ffffff",
+            "on-surface": "#002117",
+            "secondary-fixed-dim": "#a8cfbc",
+            "inverse-surface": "#003829",
+            "secondary-fixed": "#c3ecd7",
+            "surface-container-highest": "#b0f0d6",
+            "tertiary-fixed": "#ffdad7",
+            "on-primary": "#ffffff",
+            "primary-container": "#d1fae5",
+            "background": "#FFFBF7",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#ffffff",
+            "base": "#E5E7EB",
+            "border-base": "#E5E7EB",
+            "text-muted": "#6B7280",
+            "text-dark": "#111827"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.5rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "2xl": "48px",
+            "xs": "4px",
+            "margin-mobile": "16px",
+            "sm": "8px",
+            "container-max": "1280px",
+            "gutter": "24px",
+            "base": "8px",
+            "lg": "24px",
+            "md": "16px",
+            "3xl": "64px",
+            "xl": "32px",
+            "touch-target-min": "44px",
+            "stack-md": "16px",
+            "stack-lg": "24px",
+            "stack-sm": "8px",
+            "margin-desktop": "24px"
+          },
+          "fontFamily": {
+            "title-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-caps": ["Inter"],
+            "metadata": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+            "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #E5E7EB;
+      border-radius: 10px;
+    }
+    .glass-effect {
+      background: rgba(255, 251, 247, 0.8);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen custom-scrollbar">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-touch-target-min bg-surface border-b border-base shadow-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md text-primary">CampusMarket</h1>
+</div>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-stack-lg h-full">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="home">home</span> Home
+      </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="explore">explore</span> Explore
+      </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span> Sell
+      </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span> Inbox
+      </a>
+<a class="font-label-caps text-label-caps flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-4 py-2" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="person">person</span> Profile
+      </a>
+</nav>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-primary/5 rounded-full transition-all" data-icon="search">search</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-primary/5 rounded-full transition-all" data-icon="notifications">notifications</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Profile Header Section -->
+<section class="mb-stack-lg">
+<div class="bg-surface rounded-xl shadow-sm overflow-hidden border border-base p-stack-lg md:p-12 relative">
+<!-- Background Pattern Decor -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-24 -mt-24"></div>
+<div class="flex flex-col md:flex-row items-center md:items-start gap-stack-lg relative z-10">
+<!-- Avatar Container -->
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-surface shadow-md overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly university student smiling, set against a blurred campus background with soft, natural lighting. The student is wearing a clean navy polo, conveying reliability and trustworthiness, consistent with a modern corporate marketplace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkyWRUD2xyAHGYo4D767cuiyjAypkMb6nAyxu8tzVDAjoNGp6elpUDO2rYDPdNUk9LBwABtIiJBUKSPRADFOhU6VIeIgqXWgzsdYwotxsymeEmN5P4gIHI2wk8ybGLuBxOvtdzPpLnPGveQUeagX-2tnNs6F0OxFYQ03O05S5F6B3RspdF36AJJxgcuCBO0MUhbgFBgtJ0LOvdAhQ3UxKj1tce188stj8v-EjVq_xNMpfjqUEvUFUXzhYVcguz9K53Mb8Ahmf94VY"/>
+</div>
+<button class="absolute bottom-2 right-2 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-body-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- User Info -->
+<div class="flex-1 text-center md:text-left space-y-2">
+<div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 justify-center md:justify-start">
+<h2 class="text-headline-lg font-headline-lg text-dark">Alex Chen</h2>
+<span class="inline-flex items-center px-3 py-1 bg-secondary-container text-on-secondary-container text-label-caps font-label-caps rounded-full gap-1 self-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                Verified Student
+              </span>
+</div>
+<p class="text-on-surface-variant font-body-lg">Senior, Computer Science at Stanford University</p>
+<!-- Bio -->
+<p class="text-on-surface-variant text-body-sm max-w-2xl mt-4">
+              Passionate about sustainable living and high-quality tech gear. Usually selling textbooks from CS courses and occasional tech upgrades. Quick responder and open to campus meetups!
+            </p>
+<!-- Stats Row -->
+<div class="flex flex-wrap items-center justify-center md:justify-start gap-8 mt-6">
+<div class="text-center md:text-left">
+<div class="flex items-center gap-1">
+<span class="text-headline-sm font-headline-sm text-dark">4.9</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-metadata font-metadata text-muted uppercase tracking-wider">Seller Rating</p>
+</div>
+<div class="text-center md:text-left">
+<p class="text-headline-sm font-headline-sm text-dark">124</p>
+<p class="text-metadata font-metadata text-muted uppercase tracking-wider">Reviews</p>
+</div>
+<div class="text-center md:text-left">
+<p class="text-headline-sm font-headline-sm text-dark">18</p>
+<p class="text-metadata font-metadata text-muted uppercase tracking-wider">Active Listings</p>
+</div>
+<div class="text-center md:text-left">
+<p class="text-headline-sm font-headline-sm text-dark">236</p>
+<p class="text-metadata font-metadata text-muted uppercase tracking-wider">Items Sold</p>
+</div>
+</div>
+</div>
+<!-- Primary Actions -->
+<div class="flex flex-col gap-3 min-w-[200px]">
+<button class="bg-primary text-on-primary py-3 px-6 rounded-xl font-headline-sm hover:bg-primary-hover shadow-sm active:scale-95 transition-all">
+              Message Seller
+            </button>
+<button class="border border-outline-variant text-on-surface-variant py-3 px-6 rounded-xl font-label-caps hover:bg-primary/5 transition-all">
+              Follow
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg items-start">
+<!-- Left Column: Active Listings (8 cols) -->
+<section class="lg:col-span-8 space-y-stack-md">
+<div class="flex items-center justify-between">
+<h3 class="text-headline-md font-headline-md text-dark">Active Listings</h3>
+<a class="text-primary font-label-caps text-label-caps hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Listing Card 1 -->
+<div class="bg-surface rounded-xl overflow-hidden border border-base group hover:shadow-md transition-shadow">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, minimalist product photo of a high-end mechanical keyboard on a wooden desk. Soft natural side lighting emphasizes the texture of the keycaps. Professional studio setup, crisp focus, neutral background, reflecting a premium marketplace quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMoO8UtObNRbTW05TuLHDAyBlxGO9TrIMC0vI30YTs6VMtmFujPxwbyKzX5FcG94QJoZIMkuV6-9Y6n9274bzxZZ9ZdNaJUeutnMIgKn3Po5pmrdZtknAggGweRFF532SGMMVIE6TvY99YpLDWM5swbTm8H1FinzmoChcrJWFxwritmvpzjA_FgUn8l7uHKN2HcALcpOptRTLxl5tzU2pfu0hLYNYTVOGJi9jF0KV66Xu3qydZx6HuZKG128JQRAQ6ReiLCDJJ-pg"/>
+<button class="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow-sm hover:scale-110 active:scale-90 transition-all text-primary">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3">
+<span class="bg-primary-container text-primary px-2 py-1 rounded text-label-caps font-label-caps">New</span>
+</div>
+</div>
+<div class="p-4 space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-dark line-clamp-1">Mechanical Keyboard - Blue Switches</h4>
+<p class="text-primary font-headline-sm">$85.00</p>
+<div class="flex items-center gap-1 text-muted text-metadata">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                Main Campus Library
+              </div>
+</div>
+</div>
+<!-- Listing Card 2 -->
+<div class="bg-surface rounded-xl overflow-hidden border border-base group hover:shadow-md transition-shadow">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stack of three modern computer science textbooks neatly arranged on a white table. The lighting is bright and even, highlighting the clear titles. Minimalist campus aesthetic, focused on educational resources, sharp detail, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVvhpQushNa3tFD-Vu5yrga_hBgusOKTL5R8uav0Ru-ihMCEl1b-Z80M3n-zf0_XXtqJd5WVVzd4s_JjVfcfymX4SgQ_bngMcxrrRTP3dLUDwTdNyyNufca3XNTI2eno1lUEcUKA-8_82NhAXFjMkHLBEAUF3J8iIOueQacZNDfXGZWRmuFmnmj1wAxytKLJsTnRdddJ6c2r2O3iHhodFTbcSxvShWBO-bk1HvKM7DUfATf8o1jfV-MmckxHwj1agg_yrK-jn2e50"/>
+<button class="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow-sm hover:scale-110 active:scale-90 transition-all text-primary">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-4 space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-dark line-clamp-1">Intro to Algorithms - CLRS 3rd Ed</h4>
+<p class="text-primary font-headline-sm">$45.00</p>
+<div class="flex items-center gap-1 text-muted text-metadata">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                Student Union
+              </div>
+</div>
+</div>
+<!-- Listing Card 3 -->
+<div class="bg-surface rounded-xl overflow-hidden border border-base group hover:shadow-md transition-shadow">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek minimalist desk lamp with an adjustable neck, positioned on a clean white surface. Soft warm lighting creates an inviting study atmosphere. The design is modern and functional, captured with professional product photography techniques." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN2e2tvCLSnVhyoOTG_PWhVl1H1_zaYGYSUz5z2OnIt43A9Su1W-mENlyTSLOpsCegtPHdX8cfNdXKe_Yaw5kxRBVjgHtpadCW2BU0zsFLirv5q3fBsHwU9EkWYgWScMpGKsiNg0mBkDAll4FQGfZF9E-pSoWQ1V-BifKiBaJ89RELSobZmdfAPqKLwWrtxpXexmoap0uuP-Ez4SmpY2we-87bN491RDf3w2kgBDr8RkjhoneoA1qzaFhV7gN3TGtsznkiAp5fUpE"/>
+<button class="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow-sm hover:scale-110 active:scale-90 transition-all text-primary">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-4 space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-dark line-clamp-1">LED Desk Lamp - 3 Color Modes</h4>
+<p class="text-primary font-headline-sm">$20.00</p>
+<div class="flex items-center gap-1 text-muted text-metadata">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                Dorm West Wing
+              </div>
+</div>
+</div>
+<!-- Listing Card 4 -->
+<div class="bg-surface rounded-xl overflow-hidden border border-base group hover:shadow-md transition-shadow">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-quality 27-inch computer monitor displaying a vibrant coding environment with colorful syntax highlighting. The monitor is slim and modern, placed in a well-lit home office or dorm room setting. Cinematic lighting, sharp focus, tech-centric vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvbieAO4od4fVhHM0w208JdiBwrf2Mfs6Fl5Kfw6aE913WUh2Nx2CdZYjno_Th3AgSFUq6LlKU_4r3MvcYZtYWCi6tGmaUnkJjUsEYmAvS-MoTeRZ8vTWxJsteR8jIdo0219mDKs-Ww2pwmaKnTHwsmii_vuekNCo8Xk0lUSBDeB_z7bp9o4Q2qQVMNOTQJ3E2i5C2gOQm3MTbhZiiX01RZnKWCEIWTwoMEasyPCEK7t79_7nyEAV0SFdNbJJ7oKzVS-zCLq7XUhw"/>
+<button class="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow-sm hover:scale-110 active:scale-90 transition-all text-primary">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<div class="absolute top-3 left-3">
+<span class="bg-tertiary text-on-tertiary px-2 py-1 rounded text-label-caps font-label-caps">Hot</span>
+</div>
+</div>
+<div class="p-4 space-y-1">
+<h4 class="font-headline-sm text-headline-sm text-dark line-clamp-1">4K Monitor 27" - IPS Panel</h4>
+<p class="text-primary font-headline-sm">$180.00</p>
+<div class="flex items-center gap-1 text-muted text-metadata">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                Engineering Quad
+              </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Reviews & Credentials (4 cols) -->
+<aside class="lg:col-span-4 space-y-stack-lg">
+<!-- Public Reviews Section -->
+<section class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<h3 class="text-headline-md font-headline-md text-dark">Recent Reviews</h3>
+<a class="text-primary font-label-caps text-label-caps hover:underline" href="#">See All</a>
+</div>
+<div class="space-y-stack-sm">
+<!-- Review Item 1 -->
+<div class="bg-surface p-4 rounded-xl border border-base space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small circle avatar of a female student with glasses, smiling softly. Bright, clean lighting, soft focus background, consistent with a trustworthy social network style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvMkOEEaBn_0-bNQX8SahXl2hF-2mB5aeCcgc8wo_WzCDaZfV5a42Lp7i1VazZp_fDLomG0rTXvhwDU3uFk3xURXFyieYk4yaOZD5MDdU_hIBJUGaHZ2RgQRlYPJpOXu_SMn2jq2kYiKouVfSom0GcnFJlt1c4jjz9o1laGMxBguZ5HsY3z7AYbxkgQ7pb6198GtNEeVcBDlR4W619Lj2jL_NM3Kwc4OOOrbi6cXXb1224_n2IywZ_95x4wZwc8ln1Rtj4RxwxbbQ"/>
+</div>
+<div>
+<p class="text-body-sm font-semibold text-dark">Sarah J.</p>
+<p class="text-metadata text-muted">2 days ago</p>
+</div>
+</div>
+<div class="flex">
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant italic">"Alex was super responsive and the textbook was in perfect condition. Smooth transaction at the library!"</p>
+</div>
+<!-- Review Item 2 -->
+<div class="bg-surface p-4 rounded-xl border border-base space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small avatar of a male student wearing a beanie, smiling confidently. Bright natural light, high-quality resolution, reflecting a vibrant student community profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN3YWUwapaO3C8eVA9-1ZjkOfCa4qZkCojKIy2CyE4XGTf55xLmVzr1MvM84_QoJcDaMEE4jH8qcXrvZN_HiE5WstxM1Nxxqh9Oln22JKbdyU_e9pxWVRUGizxcakSmVrHMdjijlT1V4S_W41BBkDJt1TKUJQBX1nrd2qnJihjkWVB4JM_y4w1Cquvnt5aHzchy-8iXxF-GnhWr9Tskqbi687Vr9URlld8LLhw6YY1g4o9wY-qgVeAu6b4LD01eLZ1LKdZuSKxfdY"/>
+</div>
+<div>
+<p class="text-body-sm font-semibold text-dark">Marcus T.</p>
+<p class="text-metadata text-muted">1 week ago</p>
+</div>
+</div>
+<div class="flex">
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-outline-variant text-[16px]" data-icon="star">star</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant italic">"Item was exactly as described. Great seller, would definitely buy from again. Thanks Alex!"</p>
+</div>
+</div>
+</section>
+<!-- Credentials & Trust -->
+<section class="bg-primary/5 p-stack-md rounded-xl border border-base space-y-stack-md">
+<h3 class="text-label-caps font-label-caps text-muted uppercase tracking-widest">Verification Details</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<div>
+<p class="text-body-sm font-semibold text-dark">Edu-email verified</p>
+<p class="text-metadata text-muted">@stanford.edu</p>
+</div>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="calendar_today" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<div>
+<p class="text-body-sm font-semibold text-dark">Member since</p>
+<p class="text-metadata text-muted">September 2021</p>
+</div>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="task_alt" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<div>
+<p class="text-body-sm font-semibold text-dark">High Response Rate</p>
+<p class="text-metadata text-muted">Usually within 2 hours</p>
+</div>
+</li>
+</ul>
+</section>
+</aside>
+</div>
+</main>
+<!-- Mobile BottomNavBar (Hidden on Desktop) -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-base px-2 pb-2 pt-2 h-16 shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-label-caps font-label-caps">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="add_circle">add_circle</span>
+<span class="text-label-caps font-label-caps">Sell</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="text-label-caps font-label-caps">Inbox</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-caps font-label-caps">Profile</span>
+</button>
+</footer>
+<script>
+    // Lightweight atmospheric effect: subtle scroll reveal
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+
+    // Button interaction micro-animations
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.classList.add('scale-95');
+        setTimeout(() => this.classList.remove('scale-95'), 150);
+      });
+    });
+  </script>
+</body></html>

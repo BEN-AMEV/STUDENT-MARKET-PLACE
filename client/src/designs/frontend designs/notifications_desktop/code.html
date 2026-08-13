@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications | CampusMarket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .notification-item:hover .action-menu {
+            opacity: 1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e1e3e4;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#410004",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed-dim": "#68dba9",
+                        "inverse-on-surface": "#befee3",
+                        "on-tertiary-fixed-variant": "#7f2928",
+                        "on-primary-container": "#f5fff7",
+                        "on-secondary-container": "#476c5b",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        "secondary": "#416656",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#a8e7cd",
+                        "on-background": "#002117",
+                        "on-secondary-fixed-variant": "#294e3f",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#b0f0d6",
+                        "tertiary-container": "#ba5551",
+                        "inverse-primary": "#68dba9",
+                        "tertiary": "#9b3e3b",
+                        "surface-container-low": "#cbffe8",
+                        "outline": "#6d7a72",
+                        "on-primary-fixed-variant": "#005137",
+                        "primary-fixed": "#85f8c4",
+                        "primary": "#059669",
+                        "on-secondary-fixed": "#002115",
+                        "on-primary-fixed": "#002114",
+                        "surface-tint": "#059669",
+                        "secondary-container": "#c3ecd7",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#3d4a42",
+                        "surface-container": "#bbfbe1",
+                        "outline-variant": "#bccac0",
+                        "surface-container-high": "#b6f6db",
+                        "surface-bright": "#FFFBF7",
+                        "on-error": "#ffffff",
+                        "on-surface": "#002117",
+                        "secondary-fixed-dim": "#a8cfbc",
+                        "inverse-surface": "#003829",
+                        "secondary-fixed": "#c3ecd7",
+                        "surface-container-highest": "#b0f0d6",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#00855d",
+                        "background": "#FFFBF7",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#ffffff",
+                        "border-base": "#e1e3e4",
+                        "primary-hover": "#047857",
+                        "text-muted": "#6B7280"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "stack-lg": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "metadata": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-sm": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "metadata": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-margin-desktop h-16 bg-surface dark:bg-on-background border-b border-base dark:border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl">location_on</span>
+<h1 class="text-headline-md font-headline-md text-primary">CampusMarket</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Sell</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Inbox</a>
+<div class="relative group">
+<button class="flex items-center gap-2 p-1 rounded-xl bg-primary-container/10 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button>
+</div>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors relative">
+                notifications
+                <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-12 max-w-container-max mx-auto px-6 md:px-margin-desktop">
+<!-- Content Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-2">Notification Center</h2>
+<p class="text-on-surface-variant font-body-lg">Stay updated with your latest campus activity and marketplace updates.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-lg bg-surface border border-base text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+                    Mark all as read
+                </button>
+<button class="px-4 py-2 rounded-lg bg-surface border border-base text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                    Settings
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Sidebar Filters -->
+<aside class="lg:col-span-3">
+<div class="bg-surface rounded-xl p-4 shadow-sm space-y-2 border border-base">
+<button class="w-full text-left px-4 py-3 rounded-lg bg-primary-container/10 text-primary font-headline-sm text-headline-sm flex justify-between items-center">
+<span>All Alerts</span>
+<span class="bg-primary text-on-primary text-[10px] px-2 py-0.5 rounded-full">12</span>
+</button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-headline-sm text-headline-sm flex items-center gap-3">
+<span class="material-symbols-outlined">trending_down</span>
+                        Price Drops
+                    </button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-headline-sm text-headline-sm flex items-center gap-3">
+<span class="material-symbols-outlined">chat</span>
+                        Messages
+                    </button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-headline-sm text-headline-sm flex items-center gap-3">
+<span class="material-symbols-outlined">local_shipping</span>
+                        Order Status
+                    </button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-headline-sm text-headline-sm flex items-center gap-3">
+<span class="material-symbols-outlined">verified_user</span>
+                        Verification
+                    </button>
+</div>
+<!-- Ad/Promo Card -->
+<div class="mt-6 bg-primary rounded-xl overflow-hidden shadow-lg relative group h-48">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A vibrant campus scene at sunset with students interacting near a modern architectural building. The lighting is warm and golden, reflecting a prestigious and trustworthy academic environment. The style is clean, corporate photography with high-contrast elements." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoHTEWH6gpquTJA_7ouRJPutY-vd6DHn33kfIfrQZgh_H0gr3kSfbSpsLGRNQU0xyGqfvM2lBTIExAbGGKFbkENaJuflMdd8sDHd51u52LuudMLeiawidt-A5L126dnFn9RHbprWfmueMuQCJf73WYjSu8YN0ZhUmGvwhlWHI0QrSi5obTMpKL76oawVCyKjLR8plmd8fEz_OOsFk2uCi90J6QmU3oGpvgO7yFJKrOJwBkd3b7OVIXfCWpES7polUJ3WnpFbqOpW4')"></div>
+<div class="absolute bottom-0 left-0 p-4 z-20 text-on-primary">
+<p class="font-headline-sm text-headline-sm mb-1">Verify Your Student ID</p>
+<p class="text-[12px] opacity-90 mb-3">Get the 'Verified' badge and trade faster.</p>
+<button class="px-3 py-1.5 bg-on-primary text-primary rounded font-label-caps text-label-caps active:scale-95 transition-transform">Start Now</button>
+</div>
+</div>
+</aside>
+<!-- Main Feed -->
+<div class="lg:col-span-9 space-y-4">
+<!-- Today Section -->
+<div class="flex items-center gap-4 py-2">
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Today</h3>
+<div class="h-px bg-base flex-grow"></div>
+</div>
+<!-- Notification: Price Drop (Unread) -->
+<div class="notification-item bg-surface border-l-4 border-primary rounded-xl p-5 shadow-sm border border-base relative transition-all duration-200 hover:shadow-md cursor-pointer">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_down</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Price Drop Alert</h4>
+<span class="text-metadata font-metadata text-primary font-bold">2m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-3">
+                                Great news! The <span class="font-bold text-on-surface">"MacBook Pro 14 (M2)"</span> you saved has dropped from <span class="line-through">$1,200</span> to <span class="text-secondary font-bold">$1,050</span>.
+                            </p>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-caps text-label-caps hover:bg-primary-hover transition-all">View Item</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low text-on-surface font-label-caps text-label-caps hover:bg-surface-container-high transition-all">Dismiss</button>
+</div>
+</div>
+</div>
+<div class="action-menu opacity-0 absolute top-4 right-4 transition-opacity">
+<button class="material-symbols-outlined text-outline hover:text-on-surface p-1">more_vert</button>
+</div>
+</div>
+<!-- Notification: New Message (Unread) -->
+<div class="notification-item bg-surface border-l-4 border-primary rounded-xl p-5 shadow-sm border border-base relative transition-all hover:shadow-md cursor-pointer">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly college student, close-up with a soft blurred library background. High-key lighting, bright colors, representing trust and peer-to-peer security. Modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbkH44lKRPrt-_tkjt_sSjgUK5L1LqNCpdB7n8sTT3CsM8B91eHPDdwY2pbEbGjZxIIKZWZC8fgXeMgSHRQ-uS98KLnatJ_MWdX4C_5bqiEekNuadDxOZnzqn0YLIfgWa-y8AgNUpR_2QP3dKSou_vrlLM5N5wXomPAQ09ZRH4__N8neDopbFmHca6hjLAfYsChNA2U0gRoeuPz30s39EBvrYHLZOl0fDRPfxnPTyeIJwGp_TF2bfvMwmzCzE1mkanpTNZtshhQaA"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">New message from Sarah J.</h4>
+<span class="text-metadata font-metadata text-primary font-bold">45m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant italic truncate max-w-lg mb-3">
+                                "Hi! Is the chemistry textbook still available for pickup at the student union this afternoon?"
+                            </p>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low text-primary font-label-caps text-label-caps hover:bg-primary-container/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">reply</span>
+                                Reply Now
+                            </button>
+</div>
+</div>
+</div>
+<!-- Yesterday Section -->
+<div class="flex items-center gap-4 py-2 mt-4">
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Yesterday</h3>
+<div class="h-px bg-base flex-grow"></div>
+</div>
+<!-- Notification: Order Success (Read) -->
+<div class="notification-item bg-surface rounded-xl p-5 shadow-sm border border-base relative transition-all hover:bg-surface-bright group grayscale-[0.5] hover:grayscale-0">
+<div class="flex gap-4 opacity-75 group-hover:opacity-100">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">local_shipping</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Item Delivered</h4>
+<span class="text-metadata font-metadata text-outline">Yesterday, 4:20 PM</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-1">
+                                Your purchase <span class="font-bold text-on-surface">#CM-9842</span> has been marked as delivered by the seller.
+                            </p>
+<p class="text-metadata font-metadata text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Transaction completed successfully
+                            </p>
+</div>
+</div>
+</div>
+<!-- Notification: Verification (Read) -->
+<div class="notification-item bg-surface rounded-xl p-5 shadow-sm border border-base relative transition-all hover:bg-surface-bright group grayscale-[0.5] hover:grayscale-0">
+<div class="flex gap-4 opacity-75 group-hover:opacity-100">
+<div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary">verified_user</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Account Verified</h4>
+<span class="text-metadata font-metadata text-outline">Yesterday, 10:15 AM</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                                Welcome to the trusted community! Your student identity has been successfully verified. You now have the <span class="text-secondary font-bold">Verified Member</span> badge on your profile.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Older Section -->
+<div class="flex items-center gap-4 py-2 mt-4">
+<h3 class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Older</h3>
+<div class="h-px bg-base flex-grow"></div>
+</div>
+<!-- Notification: System Update (Read) -->
+<div class="notification-item bg-surface rounded-xl p-5 shadow-sm border border-base relative transition-all hover:bg-surface-bright group grayscale-[0.5] hover:grayscale-0">
+<div class="flex gap-4 opacity-75 group-hover:opacity-100">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline">campaign</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">CampusMarket Updates</h4>
+<span class="text-metadata font-metadata text-outline">Mar 12, 2024</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                                We've updated our Safety Guidelines for in-person pickups. Please review the new safe exchange locations designated on campus.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="text-center py-6">
+<button class="text-primary font-label-caps text-label-caps hover:underline active:scale-95 transition-all">
+                        Load older notifications
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-base h-16 pb-2 pt-2 px-2 shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-caps text-label-caps">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-label-caps text-label-caps">Sell</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant relative">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-caps text-label-caps">Inbox</span>
+<span class="absolute top-0 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.notification-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Mock marking as read logic
+                if (this.classList.contains('border-primary')) {
+                    this.classList.remove('border-primary');
+                    this.classList.add('grayscale-[0.5]');
+                    const badge = this.querySelector('.text-primary.font-bold');
+                    if (badge) {
+                        badge.classList.remove('text-primary', 'font-bold');
+                        badge.classList.add('text-outline');
+                    }
+                }
+            });
+        });
+
+        // Sticky header transparency effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

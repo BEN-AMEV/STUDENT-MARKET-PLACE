@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusMarket | Item Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#410004",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#fffbff",
+                    "primary-fixed-dim": "#68dba9",
+                    "inverse-on-surface": "#befee3",
+                    "on-tertiary-fixed-variant": "#7f2928",
+                    "on-primary-container": "#f5fff7",
+                    "on-secondary-container": "#476c5b",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "secondary": "#416656",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#a8e7cd",
+                    "on-background": "#002117",
+                    "on-secondary-fixed-variant": "#294e3f",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#b0f0d6",
+                    "tertiary-container": "#ba5551",
+                    "inverse-primary": "#68dba9",
+                    "tertiary": "#9b3e3b",
+                    "surface-container-low": "#cbffe8",
+                    "outline": "#6d7a72",
+                    "on-primary-fixed-variant": "#005137",
+                    "primary-fixed": "#85f8c4",
+                    "primary": "#059669",
+                    "on-secondary-fixed": "#002115",
+                    "on-primary-fixed": "#002114",
+                    "surface-tint": "#006c4a",
+                    "secondary-container": "#c3ecd7",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#3d4a42",
+                    "surface-container": "#bbfbe1",
+                    "outline-variant": "#bccac0",
+                    "surface-container-high": "#b6f6db",
+                    "surface-bright": "#FFFBF7",
+                    "on-error": "#ffffff",
+                    "on-surface": "#002117",
+                    "secondary-fixed-dim": "#a8cfbc",
+                    "inverse-surface": "#003829",
+                    "secondary-fixed": "#c3ecd7",
+                    "surface-container-highest": "#b0f0d6",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#00855d",
+                    "background": "#FFFBF7",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#FFFBF7",
+                    "border-base": "#bccac0",
+                    "text-muted": "#6d7a72",
+                    "text-dark": "#002117",
+                    "primary-hover": "#047857"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "metadata": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md-mobile": ["18px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #FFFBF7; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .item-gallery-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- Top Navigation Bar (Shared Component) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-touch-target-min bg-surface dark:bg-on-background border-b border-border-base">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95 duration-150">arrow_back</button>
+<span class="font-headline-md-mobile text-headline-md-mobile text-primary font-bold">CampusMarket</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label-caps text-label-caps text-on-surface-variant">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Explore</a>
+<a class="hover:text-primary transition-colors" href="#">How it works</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low rounded-full transition-colors">search</button>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low rounded-full transition-colors">shopping_cart</button>
+</div>
+</header>
+<main class="pt-20 pb-12 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-stack-lg text-metadata font-metadata text-outline">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Electronics</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Apple MacBook Air M2</span>
+</nav>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+<!-- Left Column: Image Gallery -->
+<section class="md:col-span-7 lg:col-span-8 flex flex-col gap-stack-md">
+<div class="relative aspect-[4/3] bg-surface-container-low rounded-xl overflow-hidden item-gallery-shadow group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A professional product photography shot of a sleek, space grey Apple MacBook Air M2 resting on a minimalist white desk." id="main-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv9HA1NppjuMcwBeWIhUm0WQoK-D4d0pd1BZ1U_DW10hYwTe1S92toRJ07TYlM623ld920V1XyiaJNCaTPto3n0-BCp2btqvEcg-zd8ZuXiZzWJLoRcyQyOd0LwcLL_tr0dlazbhrDN3yTN8uxe6UWoUpXrfsr-I7p9-5OAu4dvdaEkd9G3YaTzJ0-Py6to09oJP0NPUlKQ7zLQeUu9dxEKPjFIEQisVRto6b-4qOexCXcKRosrICuGS2D2F6GKkIQd0NEeMNLOz4"/>
+<button class="absolute top-4 right-4 bg-white/90 p-2 rounded-full shadow-md text-error hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+<!-- Thumbnails -->
+<div class="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
+<div class="cursor-pointer shrink-0 w-24 h-24 rounded-lg border-2 border-primary overflow-hidden" onclick="updateMainImage(0)">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzWPBrwtlOiwaeSaPxRVonYP4G4QMbC7Qhogy_I5_4DmuQfmXfFNmEuVj_MNpUNG1KeRW1EfjJl_koRR1Z3d75EzFlsFv9mlV6sufrMna0jUw4dXFBdnJqsUqwBbZ1rM_LJxSXIuI2t2lP8moyOkD6Gh8agbHKpjHgjng3HuJjGPawxZLOve4ycssgWRq0QHlTb0UJTyFTixJ_9um3rMoY2L3nf9gU5_fPzVBXuPm7f4P4bPfuVT9ObAblmxhfqjaT4i1imuR7q1E"/>
+</div>
+<div class="cursor-pointer shrink-0 w-24 h-24 rounded-lg border-2 border-transparent hover:border-outline-variant overflow-hidden" onclick="updateMainImage(1)">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrQvpLYEmEFXLd71xLfZBt_rYFo0HuEtrIqfUBVzosFTDDpkUxVDldbXIWRUC2HVhpROu-Ixxqn7HUf32J3KjW18taQXiR4Hb3ibttEyDxCNmFGQuwioRZjVql7cd4wNXbJM_Sjrre2zGwH8_FqwyIMuX4aeSM1-umQQtGuKr8jXXZLerd-EagkyLGp6yV_Zs7EpcnsAJX4Qwi7ceeY85DGq-jx4S7SzgD-llghrZs7jggPcFTPlUvK3Z5zcAk8EtCxDvy7sQAYR4"/>
+</div>
+<div class="cursor-pointer shrink-0 w-24 h-24 rounded-lg border-2 border-transparent hover:border-outline-variant overflow-hidden" onclick="updateMainImage(2)">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN36zsOR9CTp2c_XRn9GeozTcx8t6AxTrmASjutQOjEaLlfi9JFUVpDzTby8TepFm2PlKAmmitPsBd3EvyakswZ3Spnr_XDvWDIrqs5Oh6SADXfp2J3E2bCaNZqfXXxBTPU_PJjjniOjBwmNYnvOO3yFYrXr6F2Hnq-nKAkVSNU3Ozuy1foqHQGSJusSDt6H6ngAJCyb2u_JT4564jShEvWEoB9dlDZLVJhCCIuUpPj9iJPXj1moJ8Ri_CVAEnfyJSa8XQWyVRBlE"/>
+</div>
+<div class="cursor-pointer shrink-0 w-24 h-24 rounded-lg border-2 border-transparent hover:border-outline-variant overflow-hidden" onclick="updateMainImage(3)">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlNEOtjntgRz4Rl9-a15_Vp6Xbpx1maItTSFMZcKhmuPonmU19mTYKS24diG5uyG7OLch6oZcNkr_8ij-8DvQv3agl_9Be-e4s8XRpeNLhrjBljt6qAksj5Pg9wKJGyxBIkoeBzciYduioRKgpOaDiLuXGicTqrP52j1EksQq-AsnlszCipJTCYQ0vW6b8QzwOsbdMy9k2AX4lgFRc6buH61t85IBbrvtz6SoBOKnG1dIkedxqN9Lsjp3a9ZhSyqEA7SnDt2nHl20"/>
+</div>
+</div>
+<!-- Product Description Desktop -->
+<div class="mt-stack-lg bg-surface-container-lowest p-stack-lg rounded-xl border border-border-base hidden md:block">
+<h3 class="font-headline-sm text-headline-sm mb-4">Product Description</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Selling my slightly used MacBook Air M2 (8GB RAM, 256GB SSD). It's in pristine condition with no scratches or dents. Battery cycle count is very low (under 50). Perfect for engineering or computer science students who need a reliable machine for coding and multitasking. Comes with original box and MagSafe charger.
+                </p>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-metadata font-metadata">Original Packaging Included</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary">battery_charging_full</span>
+<span class="text-metadata font-metadata">98% Battery Health</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Product Details & CTA -->
+<aside class="md:col-span-5 lg:col-span-4 flex flex-col gap-stack-lg">
+<div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-border-base shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-3 py-1 rounded-full">Like New</span>
+<span class="text-outline font-metadata text-metadata">Posted 2h ago</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-dark mb-2">Apple MacBook Air M2 (2022)</h1>
+<div class="flex items-baseline gap-2 mb-6">
+<span class="font-headline-lg text-headline-lg text-primary">GHS 12,500</span>
+<span class="text-outline font-body-sm text-body-sm line-through">GHS 14,000</span>
+</div>
+<div class="flex flex-col gap-3 mb-8">
+<button class="w-full bg-primary hover:bg-primary-hover text-on-primary font-headline-sm text-headline-sm py-4 rounded-xl transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2">
+<span class="material-symbols-outlined">shopping_cart</span>
+                        Buy Now
+                    </button>
+<button class="w-full bg-surface border-2 border-primary text-primary hover:bg-primary/5 font-headline-sm text-headline-sm py-4 rounded-xl transition-all active:scale-[0.98] flex justify-center items-center gap-2">
+<span class="material-symbols-outlined">chat</span>
+                        Message Seller
+                    </button>
+</div>
+<hr class="border-border-base mb-6"/>
+<!-- Campus Details -->
+<div class="flex items-start gap-3 mb-4">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-dark">University of Ghana, Legon</p>
+<p class="font-metadata text-metadata text-outline">Meetup at Balme Library or JQB</p>
+</div>
+</div>
+<div class="w-full h-32 rounded-lg bg-surface-container-low overflow-hidden relative">
+<!-- Static Map Placeholder -->
+<div class="w-full h-full bg-cover bg-center grayscale opacity-70" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCt1xb_namM5BAgn4cEG_PRhQI6Ttr4W6hSSPF3jb9ayfyQy_FZ1TE0Dt-LJU_Rs6nCmuXnNoNrQmeejL-YNOag87GNV8xHP0rZuBT9aWlaSneV41gZjfopzFJ4N7b_C0CN2sobefa_nSkEqOggmLaFwOUQVKlo9h80Bo7gMrLbjnEsXULRY1s5pwue5jhpl-ZEEU-V_jnVErvNKkM2XP67FVo9Frtp1p4v7BZRoNtNC877Z9-HR_Yu03V0n9TDAiQoMP0_jfoAxp8')"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-8 h-8 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-4 h-4 bg-primary rounded-full absolute border-2 border-white"></div>
+</div>
+</div>
+</div>
+<!-- Seller Profile Card -->
+<div class="bg-surface-container-lowest p-stack-lg rounded-xl border border-border-base shadow-sm">
+<h4 class="font-label-caps text-label-caps text-outline mb-4">Seller Information</h4>
+<div class="flex items-center gap-4 mb-4">
+<div class="relative">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgn5wBKoiF3iGcYdYLZNF9Nph9FsVxuOjwBuDV5ZkJQ0GG7LI390pIXwAjWlFcr0EmG7ayqIjiqCOuq8CbecSf4y1YUF3EjB5tsbg9adzN8GGEYCkwIftHfoTQeBy7vvdARaEK_ASmDvLVzeYF4cB_12RTLuh_CvtuaISJ52wSRpRlyV5gcjIz29gCiXM7rQeE8qvgKJ2xIVyjmqxL3cn_KaDEmP7glzuiH66quIJaqH1XrITuvZK9vrvW8u8PxuXRVXD9dXUytdE"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary rounded-full p-1 border-2 border-white">
+<span class="material-symbols-outlined text-white text-[12px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-dark">Kofi Mensah</p>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-label-caps">4.9 (24 Reviews)</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2 mb-6">
+<span class="bg-primary/5 text-primary text-metadata font-metadata px-2 py-1 rounded-md">Verified Student</span>
+<span class="bg-secondary/5 text-secondary text-metadata font-metadata px-2 py-1 rounded-md">Quick Responder</span>
+</div>
+<a class="block text-center text-primary font-label-caps text-label-caps hover:underline" href="#">View Seller's Other Items</a>
+</div>
+<!-- Safety Tip Card -->
+<div class="bg-secondary-container/20 p-stack-md rounded-xl border border-secondary-container/30 flex gap-4">
+<span class="material-symbols-outlined text-primary">security</span>
+<p class="font-metadata text-metadata text-on-surface-variant leading-tight">
+<strong>Safety First:</strong> Always meet in public campus areas during daylight hours and verify the item before making any payment.
+                </p>
+</div>
+</aside>
+</div>
+<!-- Similar Items Section -->
+<section class="mt-20">
+<h2 class="font-headline-md text-headline-md mb-stack-lg">Similar Items You Might Like</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-stack-md">
+<!-- Item Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-border-base hover:shadow-lg transition-shadow group cursor-pointer">
+<div class="relative aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLjPhOxm6EUCDjxWsvLOdpTDOB5zGjyUA435K8i_LTc46-Qs2sbXDX9x4v2p8d_4AJ_FCdEChBHQznF5NEHMMffG3l41dykyGaHRR_p_YHchdp6hZQ1HKV3NSgQHIzHBz3moaBdKW8Wlk3Fi0vuVVYK022PRl3wpC3VPtILfRTdSNzQe5XPPLP-10jGNG6y9tv-9E1lyzLT0ZTfnzfi069ZMvSFTYlW5iBeJg8OvRxmMNDeCgdfuniVRgwUjVLdtYQdqOEMY3q4ys"/>
+<span class="absolute top-2 left-2 bg-white/90 text-primary font-label-caps text-[10px] px-2 py-0.5 rounded shadow-sm">Verified</span>
+</div>
+<div class="p-3">
+<h4 class="font-body-sm text-body-sm font-semibold truncate">Dell XPS 13 Core i7</h4>
+<p class="text-primary font-headline-sm text-headline-sm">GHS 8,200</p>
+<p class="text-outline font-metadata text-metadata">UG Legon Campus</p>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-border-base hover:shadow-lg transition-shadow group cursor-pointer">
+<div class="relative aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA70E_KKCjWG8YJvd7gc-eH8iGyf2CDq_MZt7KCvLIbOOUkfojaQuVcqrW6-S8nC2dB54P2Bp1WzVaSVd1YjvyyF0x9qQRXBWUNMpZmpNNDsAKU-ScuLZk1F8lolDoQQmF1Z4HGyIO95RaFYhbokn8gCEw04BT5_QoEAZ_87ZOeLVkztqBKK0jyGbH_OGxL6DBwK65z1sJT0p3n8YYTE5wsT2VF5yjrA7652EqQu1NpDxMmUJ-0IZb2GwS2HwAGnsllvdiHXF_Kefo"/>
+</div>
+<div class="p-3">
+<h4 class="font-body-sm text-body-sm font-semibold truncate">iPad Pro 11-inch</h4>
+<p class="text-primary font-headline-sm text-headline-sm">GHS 6,500</p>
+<p class="text-outline font-metadata text-metadata">UPSA Area</p>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-border-base hover:shadow-lg transition-shadow group cursor-pointer hidden md:block">
+<div class="relative aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkNwz0x1mFyBdjire4vRdB1v0mWrPYzwXgjvL-1sD5DlQ9-9efCwkwvwx01SvdoWs7-dCJIx9DtQlm_VL4LWFBdr6DjiO7urCTrPFm4-95k6RLURV6vI0nIy0r6dwXjLAnzOZFs1Pa_2zKLxu6RWQ87D1nCTxaOqM3kLc_5HCEUOmTXSlDOUSShvn19jHh1ctrUg2K0GUQiw6Ts0YQ04b-BHSL0ESYZLGsmddjqSLFt8cbxsp8snLOCpgU9dNjIOW-sJNKEZEMasY"/>
+</div>
+<div class="p-3">
+<h4 class="font-body-sm text-body-sm font-semibold truncate">AirPods Max - Silver</h4>
+<p class="text-primary font-headline-sm text-headline-sm">GHS 4,100</p>
+<p class="text-outline font-metadata text-metadata">Legon Hall</p>
+</div>
+</div>
+<!-- Item Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-border-base hover:shadow-lg transition-shadow group cursor-pointer hidden md:block">
+<div class="relative aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ5ekpNSEbhQCUWWJ65G3OQPZEdSGXxXDFkJtzGLt4H-olUN91jBxGwC7epjtD2-yQpkYQcTq0vjRZxyNtZmktNcrQKfujFXU5tBcPSf0k5XUwKdc7dAg4k8wXcTBth8_2ps8WSiLSvy9uGUFP5WwtOjz1lMnqF3zAVu6eHxP31ndYO9pEiEkHSDA9MEx3cW4AB7NMDF5uzOUfxCCQ6RU4EpSeYUPBTl2NCUDBq5Alsh2ZzOmLAIjNPzqNw0jWj5FJ2B7s0PwS5-0"/>
+</div>
+<div class="p-3">
+<h4 class="font-body-sm text-body-sm font-semibold truncate">Sony A7III + Lens</h4>
+<p class="text-primary font-headline-sm text-headline-sm">GHS 15,000</p>
+<p class="text-outline font-metadata text-metadata">Ashesi University</p>
+</div>
+</div>
+<!-- Item Card 5 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-border-base hover:shadow-lg transition-shadow group cursor-pointer hidden lg:block">
+<div class="relative aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLWsOYNtAD4Cm-xwHZqNoDGgEUqA8ylnnGwGjn7ak0tEhd-d0X8DzF1dMFfp3Kg09lxfQpFW6LDZd28UXF4gqVes-0bOXDH_plHuPBUbm6O4SwP2qb6mL30OEOxes88gvh95ErZ1F6ZChFPvDX2O3HfI0ZhO72k8wiPIRO6rnbH4PrkZ04XdPEWLS2S66eg7qQMFUBgsKLwM_9xu2MZzdou7g1ozuJyEvHqaT1uX-YC_RVyefa1onBwQRM5PxU241iIe-TWx1I3KQ"/>
+</div>
+<div class="p-3">
+<h4 class="font-body-sm text-body-sm font-semibold truncate">Ergonomic Chair</h4>
+<p class="text-primary font-headline-sm text-headline-sm">GHS 5,200</p>
+<p class="text-outline font-metadata text-metadata">Sarbah Hall</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface px-2 pb-2 pt-2 h-16 border-t border-border-base shadow-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-2 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-caps text-label-caps">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-caps text-label-caps">Sell</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-caps text-label-caps">Inbox</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</div>
+</nav>
+<script>
+    function updateMainImage(index) {
+        const mainImg = document.getElementById('main-image');
+        const thumbnails = document.querySelectorAll('.shrink-0.w-24.h-24');
+        
+        thumbnails.forEach(thumb => {
+            thumb.classList.remove('border-primary');
+            thumb.classList.add('border-transparent');
+        });
+        
+        thumbnails[index].classList.remove('border-transparent');
+        thumbnails[index].classList.add('border-primary');
+        
+        const clickedImg = thumbnails[index].querySelector('img');
+        mainImg.src = clickedImg.src;
+        
+        mainImg.classList.add('opacity-50');
+        setTimeout(() => {
+            mainImg.classList.remove('opacity-50');
+        }, 150);
+    }
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+</script>
+</body></html>

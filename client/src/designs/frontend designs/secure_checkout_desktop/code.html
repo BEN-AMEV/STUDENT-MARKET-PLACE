@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Secure Checkout | CampusMarket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#410004",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#fffbff",
+                    "primary-fixed-dim": "#68dba9",
+                    "inverse-on-surface": "#befee3",
+                    "on-tertiary-fixed-variant": "#7f2928",
+                    "on-primary-container": "#f5fff7",
+                    "on-secondary-container": "#476c5b",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "secondary": "#416656",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#a8e7cd",
+                    "on-background": "#002117",
+                    "on-secondary-fixed-variant": "#294e3f",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#b0f0d6",
+                    "tertiary-container": "#ba5551",
+                    "inverse-primary": "#68dba9",
+                    "tertiary": "#9b3e3b",
+                    "surface-container-low": "#cbffe8",
+                    "outline": "#6d7a72",
+                    "on-primary-fixed-variant": "#005137",
+                    "primary-fixed": "#85f8c4",
+                    "primary": "#059669",
+                    "primary-hover": "#047857",
+                    "on-secondary-fixed": "#002115",
+                    "on-primary-fixed": "#002114",
+                    "surface-tint": "#059669",
+                    "secondary-container": "#c3ecd7",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#3d4a42",
+                    "surface-container": "#bbfbe1",
+                    "outline-variant": "#bccac0",
+                    "surface-container-high": "#b6f6db",
+                    "surface-bright": "#FFFBF7",
+                    "on-error": "#ffffff",
+                    "on-surface": "#002117",
+                    "secondary-fixed-dim": "#a8cfbc",
+                    "inverse-surface": "#003829",
+                    "secondary-fixed": "#c3ecd7",
+                    "surface-container-highest": "#b0f0d6",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#059669",
+                    "background": "#FFFBF7",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#ffffff",
+                    "base": "#E5E7EB",
+                    "border-base": "#E5E7EB",
+                    "text-muted": "#6B7280",
+                    "text-dark": "#111827"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "metadata": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "metadata": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md-mobile": ["18px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-touch-target-min bg-surface border-b border-border-base">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95 duration-150">arrow_back</button>
+<h1 class="text-headline-md font-headline-md text-primary">CampusMarket</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-caps text-label-caps uppercase">Secure Checkout</span>
+</div>
+<div class="h-6 w-px bg-border-base"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-body-sm text-body-sm">Main Campus Quad</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-margin-desktop max-w-[1280px] mx-auto">
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Order Summary & Details -->
+<div class="col-span-12 lg:col-span-7 space-y-stack-lg">
+<!-- Order Content Section -->
+<section class="bg-surface rounded-xl shadow-sm border border-border-base overflow-hidden">
+<div class="p-stack-md border-b border-border-base bg-surface-container-low flex justify-between items-center">
+<h2 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+                        Order Items
+                    </h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2 ITEMS</span>
+</div>
+<div class="p-stack-md divide-y divide-border-base">
+<!-- Item 1 -->
+<div class="py-stack-md flex gap-stack-md items-center">
+<div class="w-24 h-24 rounded-lg bg-surface-variant overflow-hidden flex-shrink-0">
+<img alt="Modern ergonomic student desk lamp" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVNmsa1_t0iz_i5PSQo8hjSEUlrCtMCy_9VTvGnOIGA6wlakg_ijspJbmFRePwWn2Gva_noMyw0Ioo3gcoSPlyErmbFJAePlI7ZSKAIZ-nEnIfte3G9xbinvR2RhDqZQl1Pm3vuvjtowk6hSQYbARO1EFpQMgYPhCmQBCJiJ5P-k244IuQbzPo75OMfSzHC_JlWZnIIo0SyTpgfS9b887J5wNkebeYkg36Kx-w92BaXISCPUBzOOGx1ggYi32nyw6r57z677TLbRM"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-body-lg text-body-lg font-semibold">LED Task Lamp - Modern Series</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Condition: Like New • Seller: @Alex_Engineering</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full font-label-caps text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span> VERIFIED STUDENT
+                                </span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-sm text-headline-sm text-primary">$45.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="py-stack-md flex gap-stack-md items-center">
+<div class="w-24 h-24 rounded-lg bg-surface-variant overflow-hidden flex-shrink-0">
+<img alt="University textbooks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcN8d7w63gebCfb--iCdX4-D7w26IOt7YH9IrY2gS7Y8P8v73cnqaGYmrt69pGxs_lmQVRkLvmJIS4l4QhJb-e7yHugunoE7gY9I95HSDYZ53NWxbLuP3xGLTcQGKar5_rS8i7UvKLy_98SCf91xYtaugxspxECem8hBUZvW8c--FU-_bBsZaq14W2dBix7pwjnBs2c6d-b-V1o7XKDl0yvq0z6zCk3g3T5TQ7GD4WAhQBpbf7k6wCnx8kSsCtdjnP1Bluqd0ZM-Y"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-body-lg text-body-lg font-semibold">Macroeconomics 10th Edition</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Condition: Good • Seller: @StudyBuddy_99</p>
+</div>
+<div class="text-right">
+<p class="font-headline-sm text-headline-sm text-primary">$82.50</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Fulfillment Section -->
+<section class="bg-surface rounded-xl shadow-sm border border-border-base">
+<div class="p-stack-md border-b border-border-base bg-surface-container-low">
+<h2 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+                        Pickup &amp; Delivery
+                    </h2>
+</div>
+<div class="p-stack-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Option 1: Pickup -->
+<label class="relative flex flex-col p-stack-md border-2 border-primary bg-primary/5 rounded-xl cursor-pointer">
+<input checked="" class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="fulfillment" type="radio"/>
+<span class="material-symbols-outlined text-primary text-3xl mb-2">handshake</span>
+<span class="font-body-lg text-body-lg font-bold">On-Campus Pickup</span>
+<span class="text-on-surface-variant font-metadata text-metadata mt-1">Meet at Student Union Center</span>
+<span class="text-primary font-label-caps text-label-caps mt-3">FREE</span>
+</label>
+<!-- Option 2: Delivery -->
+<label class="relative flex flex-col p-stack-md border border-border-base hover:border-primary/50 transition-colors rounded-xl cursor-pointer">
+<input class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="fulfillment" type="radio"/>
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-2">local_mall</span>
+<span class="font-body-lg text-body-lg font-bold">Campus Delivery</span>
+<span class="text-on-surface-variant font-metadata text-metadata mt-1">Direct to Dormitory (Zone A/B)</span>
+<span class="text-primary font-label-caps text-label-caps mt-3">+$5.00</span>
+</label>
+</div>
+<div class="mt-6">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2">MEETING NOTES / DELIVERY INSTRUCTIONS</label>
+<textarea class="w-full rounded-lg border-border-base focus:ring-2 focus:ring-primary focus:border-primary p-3 font-body-sm text-body-sm min-h-[100px]" placeholder="e.g. Meet me near the central fountain at 2 PM..."></textarea>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Payment Selection & Totals -->
+<div class="col-span-12 lg:col-span-5 space-y-stack-lg sticky top-24">
+<!-- Payment Summary Card -->
+<section class="bg-surface rounded-xl shadow-sm border border-border-base overflow-hidden">
+<div class="p-stack-md border-b border-border-base bg-surface-container-low">
+<h2 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+                        Payment Method
+                    </h2>
+</div>
+<div class="p-stack-md space-y-4">
+<!-- Card Payment -->
+<div class="p-4 border border-border-base rounded-xl flex items-center gap-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-lg text-body-lg font-semibold">Credit/Debit Card</p>
+<p class="text-on-surface-variant font-metadata text-metadata">Securely processed by Paystack</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+<!-- M-Pesa Payment -->
+<div class="p-4 border-2 border-primary bg-primary/5 rounded-xl flex items-center gap-4 cursor-pointer relative">
+<div class="w-12 h-12 rounded bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">smartphone</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-lg text-body-lg font-semibold">M-Pesa / Mobile Money</p>
+<p class="text-on-surface-variant font-metadata text-metadata">Enter phone number to receive prompt</p>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Phone Input -->
+<div class="mt-2 space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant">SAFARICOM PHONE NUMBER</label>
+<div class="flex gap-2">
+<div class="bg-surface-container-low px-3 py-3 rounded-lg border border-border-base font-body-sm text-body-sm flex items-center">+254</div>
+<input class="flex-grow rounded-lg border-border-base focus:ring-2 focus:ring-primary focus:border-primary p-3 font-body-sm text-body-sm" placeholder="712 345 678" type="tel"/>
+</div>
+</div>
+<div class="pt-4 border-t border-border-base space-y-3">
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Subtotal</span>
+<span>$127.50</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Platform Fee (2%)</span>
+<span>$2.55</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Pickup/Delivery</span>
+<span class="text-primary font-semibold">FREE</span>
+</div>
+<div class="h-px bg-border-base my-2"></div>
+<div class="flex justify-between items-end">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">TOTAL AMOUNT</p>
+<p class="font-headline-lg text-headline-lg text-primary">$130.05</p>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant font-metadata text-metadata italic">Approx. KES 16,900</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-stack-md bg-surface-container-low border-t border-border-base">
+<button class="w-full bg-primary hover:bg-primary-hover text-on-primary font-body-lg text-body-lg font-bold py-4 rounded-xl shadow-md transition-all active:scale-[0.98] flex items-center justify-center gap-3" id="payButton" onclick="simulatePayment()">
+<span class="material-symbols-outlined">lock</span>
+                        Pay Securely Now
+                    </button>
+<p class="mt-4 text-center font-metadata text-metadata text-on-surface-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                        Encrypted by SSL 256-bit Protection
+                    </p>
+</div>
+</section>
+<!-- Student Discount Banner -->
+<div class="bg-tertiary-fixed text-on-tertiary-fixed p-stack-md rounded-xl flex gap-stack-md items-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">redeem</span>
+<div>
+<p class="font-body-sm text-body-sm font-bold">First Purchase Bonus</p>
+<p class="font-metadata text-metadata">You're getting 100 CampusPoints for this order!</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Payment Modal Simulation -->
+<div class="fixed inset-0 bg-on-background/60 backdrop-blur-sm z-[100] hidden items-center justify-center" id="paymentOverlay">
+<div class="bg-surface rounded-2xl p-stack-lg max-w-md w-full mx-4 shadow-2xl text-center scale-95 transition-transform duration-300" id="paymentModal">
+<div class="space-y-6" id="processingState">
+<div class="relative w-20 h-20 mx-auto">
+<div class="absolute inset-0 border-4 border-primary/20 rounded-full"></div>
+<div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+<span class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-primary text-3xl">smartphone</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Authorizing Payment</h3>
+<p class="text-on-surface-variant mt-2">Please check your phone for the M-Pesa PIN prompt to complete your transaction.</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg font-mono text-primary font-bold">
+                Ref: CMDX-998271
+            </div>
+<button class="text-on-surface-variant font-label-caps text-label-caps underline hover:text-primary transition-colors" onclick="closePayment()">Cancel Transaction</button>
+</div>
+<div class="hidden space-y-6" id="successState">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center mx-auto scale-0 transition-transform duration-500 delay-200" id="successIcon">
+<span class="material-symbols-outlined text-primary text-5xl">check_circle</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Payment Successful!</h3>
+<p class="text-on-surface-variant mt-2">Your order has been confirmed. The sellers have been notified of your pickup request.</p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold">View Order Status</button>
+<button class="w-full border border-border-base py-3 rounded-xl font-bold" onclick="window.location.reload()">Return to Market</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function simulatePayment() {
+        const overlay = document.getElementById('paymentOverlay');
+        const modal = document.getElementById('paymentModal');
+        const processing = document.getElementById('processingState');
+        const success = document.getElementById('successState');
+        const successIcon = document.getElementById('successIcon');
+
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+        
+        setTimeout(() => {
+            modal.classList.remove('scale-95');
+            modal.classList.add('scale-100');
+        }, 10);
+
+        setTimeout(() => {
+            processing.classList.add('hidden');
+            success.classList.remove('hidden');
+            setTimeout(() => {
+                successIcon.classList.remove('scale-0');
+                successIcon.classList.add('scale-100');
+            }, 100);
+        }, 3500);
+    }
+
+    function closePayment() {
+        const overlay = document.getElementById('paymentOverlay');
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+    }
+
+    document.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('focus', () => {
+            el.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        el.addEventListener('blur', () => {
+            el.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    });
+</script>
+</body></html>
