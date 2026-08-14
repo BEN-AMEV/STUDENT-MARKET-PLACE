@@ -23,7 +23,7 @@
 .detail-breadcrumbs-separator { font-size: 13px; }
 .detail-breadcrumbs-current { color: var(--text-secondary); font-weight: 600; }
 
-/* Grid Layout */
+/* ── Grid Layout ───────────────────────────────────────────── */
 .detail-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -36,7 +36,7 @@
   .detail-grid { grid-template-columns: 8fr 4fr; }
 }
 
-/* Gallery */
+/* ── Gallery Column ────────────────────────────────────────── */
 .detail-gallery-column { display: flex; flex-direction: column; gap: var(--space-md); }
 
 .detail-main-image-wrapper {
@@ -89,16 +89,16 @@
 .detail-thumbnail:hover { border-color: var(--border-mid); }
 .detail-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Description Card */
-.detail-desc-card { margin-top: var(--space-lg); }
+/* ── Description Card ──────────────────────────────────────── */
+.detail-desc-card { margin-top: var(--space-md); }
 .detail-desc-title { margin-bottom: var(--space-md); font-family: var(--font-display); color: var(--text-primary); }
 .detail-desc-text { color: var(--text-secondary); line-height: 1.7; }
 
 .detail-desc-specs {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
 }
 @media (min-width: 480px) { .detail-desc-specs { grid-template-columns: 1fr 1fr; } }
 
@@ -111,7 +111,7 @@
 }
 .detail-spec-icon { color: var(--accent); }
 
-/* Sidebar */
+/* ── Sidebar Column ────────────────────────────────────────── */
 .detail-sidebar-column {
   display: flex; flex-direction: column; gap: var(--space-lg);
 }
@@ -119,6 +119,7 @@
   .detail-sidebar-column { position: sticky; top: 80px; }
 }
 
+/* ── Info Card (price + title + CTAs) ─────────────────────── */
 .detail-info-card { display: flex; flex-direction: column; gap: var(--space-md); }
 .detail-meta-row { display: flex; justify-content: space-between; align-items: center; }
 .detail-title {
@@ -253,7 +254,7 @@
 .detail-safety-icon { color: var(--accent); flex-shrink: 0; }
 .detail-safety-text { font-size: var(--font-size-metadata); color: var(--text-secondary); line-height: 1.5; }
 
-/* Similar Items */
+/* ── Similar Items ──────────────────────────────────────────── */
 .detail-similar { margin-top: 64px; }
 .detail-similar-title { margin-bottom: var(--space-lg); font-family: var(--font-display); color: var(--text-primary); }
 .detail-similar-grid {
@@ -297,34 +298,90 @@
 }
 .detail-similar-location { font-size: 11px; color: var(--text-muted); }
 
-/* Mobile sticky buy panel */
+/* ── Mobile Layout ─────────────────────────────────────────── */
+/* 
+ * On mobile: ALL cards (price, seller, safety) are visible in the normal scroll.
+ * Only the Buy Now + WhatsApp buttons are in a compact sticky bottom bar.
+ */
+
+/* Mobile sticky action bar - only shows buttons */
+.detail-mobile-sticky-bar {
+  display: none; /* hidden on desktop */
+}
+
 @media (max-width: 767px) {
+
+  /* Remove the fixed sidebar column on mobile — content is inline */
   .detail-sidebar-column {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* On mobile, hide CTA buttons inside the info card
+     since they appear in the sticky bar instead */
+  .detail-cta-group {
+    display: none;
+  }
+
+  /* Make the sticky bar visible on mobile */
+  .detail-mobile-sticky-bar {
+    display: flex;
     position: fixed;
-    bottom: 68px; left: 0; right: 0;
+    bottom: 68px; /* above bottom nav */
+    left: 0; right: 0;
     z-index: 40;
-    padding: var(--space-md) var(--space-margin-mobile);
-    background: rgba(9,14,12,0.95);
-    backdrop-filter: blur(16px);
+    padding: 10px var(--space-margin-mobile);
+    background: rgba(9, 14, 12, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid var(--border-subtle);
-    flex-direction: row;
     gap: var(--space-sm);
     align-items: center;
-    box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
   }
-  .detail-info-card { display: none; }
-  .detail-seller-card { display: none; }
-  .detail-safety-card { display: none; }
-  .detail-location-section { display: none; }
-  .detail-map-box { display: none; }
-  /* Only show CTA on mobile panel */
-  .detail-cta-group {
+
+  /* Price label inside sticky bar */
+  .detail-mobile-price {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .detail-mobile-sticky-bar .detail-cta-group {
+    display: flex;
     flex-direction: row;
     flex: 1;
+    gap: var(--space-sm);
   }
-  .detail-cta-btn { flex: 1; height: 48px; font-size: var(--font-size-body-sm); }
-  .detail-whatsapp-btn { flex: 1; height: 48px; font-size: var(--font-size-body-sm); }
 
-  /* Add bottom padding to main content so sticky panel doesn't cover it */
+  .detail-mobile-sticky-bar .detail-cta-btn {
+    flex: 1;
+    height: 46px;
+    font-size: var(--font-size-body-sm);
+  }
+
+  .detail-mobile-sticky-bar .detail-whatsapp-btn {
+    flex: 1;
+    height: 46px;
+    font-size: var(--font-size-body-sm);
+  }
+
+  /* Extra bottom padding so sticky bar doesn't cover the last card */
   .detail-container { padding-bottom: 140px; }
+
+  /* Make the info card compact on mobile — no full CTA section */
+  .detail-info-card {
+    gap: var(--space-sm);
+  }
+
+  /* Location and map still show on mobile but compact */
+  .detail-map-box {
+    height: 90px;
+  }
 }
