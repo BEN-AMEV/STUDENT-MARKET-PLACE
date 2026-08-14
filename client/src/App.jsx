@@ -26,6 +26,11 @@ import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import Checkout from './pages/Checkout';
+import AboutUs from './pages/AboutUs';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import SafetyGuidelines from './pages/SafetyGuidelines';
+import FAQ from './pages/FAQ';
 
 function App() {
   const checkAuth = useAuthStore((state) => state.checkAuth);
@@ -49,6 +54,13 @@ function App() {
           <Route path="explore" element={<Explore />} />
           <Route path="listings/:id" element={<ListingDetail />} />
           <Route path="users/:userId" element={<StudentProfile />} />
+
+          {/* Documentation pages */}
+          <Route path="about" element={<AboutUs />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="privacy" element={<Privacy />} />
+          <Route path="safety" element={<SafetyGuidelines />} />
+          <Route path="faq" element={<FAQ />} />
 
           {/* Protected routes (any authenticated user) */}
           <Route element={<ProtectedRoute />}>
