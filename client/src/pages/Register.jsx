@@ -280,9 +280,9 @@ const Register = () => {
                   />
                   <label htmlFor="terms">
                     I agree to the{' '}
-                    <a href="#" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>Terms of Service</a>{' '}
+                    <Link to="/terms" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>Terms of Service</Link>{' '}
                     and{' '}
-                    <a href="#" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>Privacy Policy</a>.
+                    <Link to="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>Privacy Policy</Link>.
                   </label>
                 </div>
 

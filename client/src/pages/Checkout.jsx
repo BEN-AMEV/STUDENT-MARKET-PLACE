@@ -443,7 +443,7 @@ const Checkout = () => {
                   className="checkout-checkbox"
                 />
                 <span>
-                  I agree to the <Link to="/explore" className="checkout-link">Terms of Service</Link> and understand that CampusMarket facilitates transactions under our 24-Hour Escrow Protection policy.
+                  I agree to the <Link to="/terms" target="_blank" rel="noopener noreferrer" className="checkout-link">Terms of Service</Link> and understand that CampusMarket facilitates transactions under our 24-Hour Escrow Protection policy.
                 </span>
               </label>
 

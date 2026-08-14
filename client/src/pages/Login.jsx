@@ -151,9 +151,9 @@ const Login = () => {
 
       {/* Footer Links */}
       <footer className="auth-page-footer">
-        <a href="#">Terms of Service</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Cookie Settings</a>
+        <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
+        <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
+        <Link to="/safety" target="_blank" rel="noopener noreferrer">Safety Guidelines</Link>
       </footer>
     </div>
   );
