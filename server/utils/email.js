@@ -7,7 +7,8 @@ const nodemailer = require('nodemailer');
 const getTransporter = () => {
   const host = process.env.SMTP_HOST?.trim();
   const user = process.env.SMTP_USER?.trim();
-  const pass = process.env.SMTP_PASS?.trim();
+  // Strip spaces from Google App Password (e.g. 'dhsr vtsd luga xgtz' -> 'dhsrvtsdlugaxgtz')
+  const pass = (process.env.SMTP_PASS || '').replace(/\s+/g, '');
   const port = parseInt(process.env.SMTP_PORT) || 587;
   const isGmail = (process.env.SMTP_SERVICE || '').toLowerCase() === 'gmail' ||
                   (host || '').toLowerCase().includes('gmail');
