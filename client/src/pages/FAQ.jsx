@@ -217,6 +217,13 @@ const FAQ = () => {
           <h2>Still Need Help?</h2>
           <p>Can't find the answer you're looking for? Our support team is here to help.</p>
           <div className="docs-contact-grid">
+            <a href="https://wa.me/233509254483" target="_blank" rel="noopener noreferrer" className="docs-contact-card">
+              <span className="material-symbols-outlined" style={{ color: '#25D366' }}>chat</span>
+              <div>
+                <strong>WhatsApp Support</strong>
+                <span>+233 50 925 4483</span>
+              </div>
+            </a>
             <a href="mailto:support@campusmarket.gh" className="docs-contact-card">
               <span className="material-symbols-outlined">alternate_email</span>
               <div>

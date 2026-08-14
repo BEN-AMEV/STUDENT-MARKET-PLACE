@@ -173,6 +173,7 @@ const SafetyGuidelines = () => {
           </p>
           <ul className="docs-list">
             <li>Use the <strong>Report</strong> button on any user's profile or listing</li>
+            <li>WhatsApp our support team at <a href="https://wa.me/233509254483" target="_blank" rel="noopener noreferrer">+233 50 925 4483</a></li>
             <li>Email us immediately at <a href="mailto:safety@campusmarket.gh">safety@campusmarket.gh</a></li>
             <li>If you are in physical danger, contact your campus security or Ghana Police Service (191)</li>
           </ul>
