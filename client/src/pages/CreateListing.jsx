@@ -79,8 +79,9 @@ const CreateListing = () => {
 
     // Creating mock object URL for frontend display
     const previewUrl = URL.createObjectURL(file);
-    setImages([...images, { file, previewUrl }]);
+    setImages(prev => [...prev, { file, previewUrl }]);
     toast.success('Image added!');
+    e.target.value = '';
   };
 
   const handleImageRemove = (index) => {
@@ -153,9 +154,7 @@ const CreateListing = () => {
         formData.append('images', img.file);
       }
 
-      const { data } = await api.post('/listings', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      const { data } = await api.post('/listings', formData);
 
       toast.success('Listing published successfully!');
       // Navigate to the new listing's detail page

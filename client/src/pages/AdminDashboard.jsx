@@ -739,7 +739,7 @@ const AdminDashboard = () => {
                           style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }}
                           onError={(e) => {
                             e.currentTarget.onerror = null;
-                            e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&fit=crop';
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=150&fit=crop';
                           }}
                         />
                       )}

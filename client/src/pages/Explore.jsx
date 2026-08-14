@@ -170,7 +170,7 @@ const Explore = () => {
       const raw = item.images[0].thumbnail || item.images[0].url;
       return resolveImageUrl(raw);
     }
-    return 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=450&fit=crop';
+    return 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=450&fit=crop';
   };
 
   return (
@@ -334,7 +334,7 @@ const Explore = () => {
                         alt={item.title}
                         onError={(e) => {
                           e.currentTarget.onerror = null;
-                          e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=450&fit=crop';
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=450&fit=crop';
                         }}
                       />
                       <button

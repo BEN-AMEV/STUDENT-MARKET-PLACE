@@ -116,9 +116,7 @@ const Profile = () => {
     try {
       const fd = new FormData();
       fd.append('avatar', file);
-      const { data } = await api.post('/users/me/avatar', fd, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      const { data } = await api.post('/users/me/avatar', fd);
       updateUser(data.data);
       toast.success('Avatar updated!');
     } catch (error) {
@@ -135,8 +133,8 @@ const Profile = () => {
       toast.error('Only JPEG, PNG, or WebP images are allowed.');
       return;
     }
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error('File must be under 5 MB.');
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error('ID image must be under 10 MB.');
       return;
     }
     setIdFile(file);
@@ -176,9 +174,7 @@ const Profile = () => {
     try {
       const fd = new FormData();
       fd.append('studentId', idFile);
-      const { data } = await api.post('/users/me/verify-student', fd, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      const { data } = await api.post('/users/me/verify-student', fd);
       updateUser(data.data);
       setIdFile(null);
       setIdPreview(null);

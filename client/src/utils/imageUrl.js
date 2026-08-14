@@ -1,7 +1,7 @@
 const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api')
   .replace(/\/api\/?$/, '');
 
-const DEFAULT_FALLBACK = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&fit=crop';
+const DEFAULT_FALLBACK = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&fit=crop';
 
 /**
  * Resolves local relative upload URLs (e.g. /uploads/listings/xxx.png)

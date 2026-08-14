@@ -127,7 +127,7 @@ const ListingDetail = () => {
   // Build image list — use image URLs from the API
   const imageUrls = listing.images && listing.images.length > 0
     ? listing.images.map((img) => resolveImageUrl(img.url || img))
-    : ['https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=450&fit=crop']; // Fallback
+    : ['https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=450&fit=crop']; // Fallback
 
   const seller = listing.seller || {};
   const sellerName = seller.firstName ? `${seller.firstName} ${seller.lastName}` : 'Unknown Seller';
@@ -156,7 +156,7 @@ const ListingDetail = () => {
               className="detail-main-image"
               onError={(e) => {
                 e.currentTarget.onerror = null;
-                e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=800&h=600&fit=crop';
+                e.currentTarget.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=600&fit=crop';
               }}
             />
             <button
@@ -185,7 +185,7 @@ const ListingDetail = () => {
                     alt={`Thumbnail ${index + 1}`}
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&h=150&fit=crop';
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=150&h=150&fit=crop';
                     }}
                   />
                 </div>
@@ -341,7 +341,7 @@ const ListingDetail = () => {
                       alt={item.title}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=225&fit=crop';
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=225&fit=crop';
                       }}
                     />
                   </div>

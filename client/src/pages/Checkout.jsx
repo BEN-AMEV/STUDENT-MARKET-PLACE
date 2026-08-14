@@ -278,7 +278,7 @@ const Checkout = () => {
 
   const imageUrl = resolveImageUrl(
     listing.images?.[0],
-    'https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=225&fit=crop'
+    'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=225&fit=crop'
   );
 
   const sellerName = listing.seller
@@ -476,7 +476,7 @@ const Checkout = () => {
                   alt={listing.title}
                   onError={(e) => {
                     e.currentTarget.onerror = null;
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=225&fit=crop';
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=225&fit=crop';
                   }}
                 />
               </div>

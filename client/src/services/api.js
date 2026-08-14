@@ -17,6 +17,11 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    // For FormData uploads, let the browser and Axios set multipart/form-data with boundary
+    if (config.data instanceof FormData) {
+      delete config.headers['Content-Type'];
+      delete config.headers['content-type'];
+    }
     return config;
   },
   (error) => Promise.reject(error)

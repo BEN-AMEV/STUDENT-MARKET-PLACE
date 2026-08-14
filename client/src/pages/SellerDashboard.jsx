@@ -119,7 +119,7 @@ const SellerDashboard = () => {
     if (item.images && item.images.length > 0) {
       return resolveImageUrl(item.images[0]);
     }
-    return 'https://images.unsplash.com/photo-1560472355-536de3962603?w=150&h=112&fit=crop';
+    return 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=150&h=112&fit=crop';
   };
 
   const formatDate = (dateStr) => {
