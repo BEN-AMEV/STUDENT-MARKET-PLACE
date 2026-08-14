@@ -85,52 +85,66 @@ const Checkout = () => {
     try {
       // 1. Initialize transaction via backend API (uses Paystack Secret Key)
       const { data: initRes } = await api.post(`/orders/${order._id}/initiate-payment`);
-      const { reference, access_code, authorization_url } = initRes.data;
+      const { reference, authorization_url } = initRes.data;
 
       // 2. Load Paystack Inline SDK script
       const scriptLoaded = await loadPaystackScript();
       const publicKey = (import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '').trim();
 
-      if (scriptLoaded && window.PaystackPop) {
-        const handler = window.PaystackPop.setup({
-          key: publicKey,
-          access_code,
-          onClose: () => {
-            toast('Payment window closed. Your order is saved — you can pay anytime from your Dashboard.', { icon: 'ℹ️' });
-            setSubmitting(false);
-          },
-          callback: async (response) => {
-            try {
+      // 3. Try inline popup — only if script loaded AND we have a public key
+      if (scriptLoaded && window.PaystackPop && publicKey) {
+        try {
+          // IMPORTANT: setup() requires key + email + amount + ref.
+          // Do NOT pass access_code to setup() — it's incompatible with the popup API.
+          // IMPORTANT: callback must be a plain function, NOT async.
+          // Paystack's internal validator rejects Promise-returning (async) functions.
+          const handler = window.PaystackPop.setup({
+            key: publicKey,
+            email: user?.email,
+            amount: Math.round(order.amount * 100), // convert GHS → pesewas
+            ref: reference,
+            currency: order.currency || 'GHS',
+            callback: function (response) {
               const refToVerify = response?.reference || reference;
-              const { data: verifyData } = await api.get(
-                `/orders/verify-payment?reference=${refToVerify}&orderId=${order._id}`
-              );
-              setOrderSuccess(verifyData.data);
-              toast.success('Payment confirmed! 🎉');
-            } catch (err) {
-              const msg = err.response?.data?.message || 'Payment verification failed.';
-              toast.error(msg);
+              api.get(`/orders/verify-payment?reference=${refToVerify}&orderId=${order._id}`)
+                .then(({ data: verifyData }) => {
+                  setOrderSuccess(verifyData.data);
+                  toast.success('Payment confirmed! 🎉');
+                })
+                .catch((err) => {
+                  const msg = err.response?.data?.message || 'Payment verification failed.';
+                  toast.error(msg);
+                  setSubmitting(false);
+                });
+            },
+            onClose: function () {
+              toast('Payment window closed. Your order is saved — pay anytime from Dashboard.', { icon: 'ℹ️' });
               setSubmitting(false);
-            }
-          },
-        });
+            },
+          });
+          handler.openIframe();
+          return; // Popup opened — exit here
+        } catch (popupErr) {
+          console.warn('[Paystack] Popup setup failed, falling back to redirect:', popupErr.message);
+        }
+      }
 
-        handler.openIframe();
-      } else if (authorization_url) {
-        // Fallback: Redirect directly to Paystack's official hosted checkout page
+      // 4. Fallback: redirect to Paystack hosted checkout page
+      if (authorization_url) {
         toast('Redirecting to Paystack secure checkout...', { icon: '🔄' });
         window.location.href = authorization_url;
       } else {
-        toast.error('Could not initialize payment gateway.');
+        toast.error('Could not open payment gateway. Please try again.');
         setSubmitting(false);
       }
     } catch (err) {
       console.error('[Paystack Payment Error]:', err);
-      const msg = err.response?.data?.message || 'Failed to initialize payment gateway. Check your keys or connection.';
+      const msg = err.response?.data?.message || 'Failed to initialize payment. Please try again.';
       toast.error(msg);
       setSubmitting(false);
     }
-  }, []);
+  }, [user]);
+
 
   // ── Form submit ────────────────────────────────────────────────────────────
   const handleSubmit = async (e) => {
@@ -161,7 +175,11 @@ const Checkout = () => {
         setSubmitting(false);
       }
     } catch (err) {
-      const msg = err.response?.data?.message || 'Failed to place order. Please try again.';
+      const status = err.response?.status;
+      let msg = err.response?.data?.message || 'Failed to place order. Please try again.';
+      // Give clearer messages for common errors
+      if (status === 403) msg = err.response?.data?.message || 'You cannot purchase your own listing.';
+      if (status === 409) msg = 'This listing is no longer available for purchase.';
       toast.error(msg);
       setSubmitting(false);
     }
