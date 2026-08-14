@@ -176,7 +176,9 @@ const userSchema = new mongoose.Schema(
   {
     timestamps: true,
     toJSON: {
+      virtuals: true,
       transform(doc, ret) {
+        // Strip sensitive fields from all API responses
         delete ret.passwordHash;
         delete ret.emailOtp;
         delete ret.emailOtpExpiry;
@@ -187,6 +189,7 @@ const userSchema = new mongoose.Schema(
         return ret;
       },
     },
+    toObject: { virtuals: true },
   }
 );
 
@@ -212,8 +215,5 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.passwordHash);
 };
 
-// Ensure virtuals are included in JSON
-userSchema.set('toJSON', { virtuals: true });
-userSchema.set('toObject', { virtuals: true });
-
 module.exports = mongoose.model('User', userSchema);
+
